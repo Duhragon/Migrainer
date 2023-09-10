@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* Adjust this value to control the distance */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.move-up-down {
+  animation: moveUpDown 2s ease-in-out infinite; /* Adjust animation duration (1000ms) here */
+}
+
+@layer components {
+  .button-style {
+    @apply py-1 px-2 rounded bg-button-primary  md:text-lg lg:text-xl  md:px-3 font-semibold cursor-pointer hover:bg-button-p-hover transition-all;
+  }
+  .button-dark {
+    @apply py-1 px-2 rounded bg-button-dark text-text-light text-sm sm:text-base lg:text-xl font-semibold cursor-pointer hover:bg-button-d-hover transition-all;
+  }
+
+  .loader {
+    margin-left: 1rem;
+    width: 35px;
+    height: 35px;
+    border: 5px solid #f4eee0;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
