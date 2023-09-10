@@ -36,6 +36,7 @@ const LoginForm = () => {
               label="Email address"
               labelStyle="lg:text-lg"
               containerStyle="flex flex-col gap-1"
+              inputStyle="p-1 px-2 md:text-base text-input-text mt-1 rounded text-sm lg:mb-3"
               ref={emailRef}
               register={register("email", {
                 required: "email required",
