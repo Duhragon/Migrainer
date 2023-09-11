@@ -13,8 +13,8 @@ export default {
       colors: {
         "bg-primary": "#121212",
         "bg-secondary": "#2f2b3a",
-        "input-text": "#2f2b3a",
         "bg-third": "#1a1625",
+        "input-text": "#2f2b3a",
         "text-primary": "#F4EEE0",
         "text-light": "#908d96",
         "button-primary": "#7a5af5",
@@ -23,6 +23,11 @@ export default {
         "links-hover": "#a688fa",
         "button-dark": "#2f2b3a",
         "button-d-hover": "#46424f",
+        severe: "#fe8686",
+        mild: "#91d191",
+        moderate: "#fecc86",
+        least: "#ba9ffb",
+
         // "border-common": "",
       },
     },

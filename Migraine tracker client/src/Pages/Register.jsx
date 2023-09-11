@@ -138,7 +138,7 @@ function Register() {
                 </Link>
                 {/* </div> */}
               </div>
-              {errMsg?.message && <span>{errMsg.message}</span>}
+              {errMsg?.message && <span>{errMsg?.message}</span>}
             </form>
           </div>
         </div>
