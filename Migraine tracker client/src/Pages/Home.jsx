@@ -5,12 +5,18 @@ import TopBanner from "../Dashboard/TopBanner";
 
 function Home() {
   return (
-    <div className="bg-bg-primary flex flex-col mx-auto justify-between lg:w-10/12 xl:w-7/12 h-screen">
-      <div className="">
-        {/* <LeftPane /> */}
-        <MainContent />
+    // <div className="bg-bg-primary px-2 sm: flex flex-col mx-auto justify-between lg:w-10/12 xl:w-7/12 h-screen">
+    <div className="h-screen flex flex-col justify-between">
+      <div className=" sm:flex w-full flex-col mx-auto justify-between lg:w-10/12 xl:w-7/12 ">
+        <div className="h-fit pr-1 pl-2">
+          {/* <LeftPane /> */}
+          <MainContent />
+        </div>
+        <Footer />
       </div>
-      <Footer />
+      <p className="flex h-10 flex-col justify-center w-screen bg-bg-third mt-2 text-center p-1 md:p-2">
+        &copy; 2023 Shubham Dhoot
+      </p>
     </div>
   );
 }

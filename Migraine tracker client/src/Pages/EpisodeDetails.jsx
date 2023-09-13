@@ -1,5 +1,9 @@
+// import { AiOutlineRight } from "react-icons/ai";
+
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function EpisodeDetails({ item, i }) {
-  console.log(item);
   const dateString = item.createdAt;
   const date = new Date(dateString);
   const { duration, severity } = item;
@@ -30,27 +34,34 @@ function EpisodeDetails({ item, i }) {
   // console.log(formattedDate);
 
   return (
-    <div className=" mt-1 pb-1 px-2">
-      <li className="bg-bg-secondary md:text-lg p-4 transition-all hover:bg-bg-primary rounded">
+    <div className=" border-t border-bg-secondary ">
+      <li className="cursor-pointer bg-bg-third md:text-lg p-4 transition-all hover:bg-bg-hover">
         {/* <div className="flex justify-between font-thin"> */}
-        <div className="grid grid-cols-4  justify-between font-thin">
-          <span className="col-span-3 ">{formattedDate}</span>
-          <span className="text-text-light  text-sm col-start-1 col-span-2 font-thin pr-1 flex items-center">
-            duration: {duration}
-          </span>
+        <div className="grid grid-cols-4 text-text-secondary hover:text-text-primary justify-between transition-all">
+          <p className="col-span-3 sm:text-lg">{formattedDate}</p>
+          <p className=" text-text-light md:mt-1 text-xs col-start-1 col-span-3 pr-1 flex items-center">
+            <span className="bg-bg-duration py-1 px-2 rounded-md">
+              {duration} {duration > 1 ? "hours" : "hour"}{" "}
+            </span>
+            <span
+              className={`${
+                severity === "Moderate"
+                  ? "text-moderate"
+                  : severity === "Mild"
+                  ? "text-mild"
+                  : severity === "Severe"
+                  ? "text-severe"
+                  : ""
+              } ml-3 tracking-wide`}
+            >
+              ({severity})
+            </span>
+          </p>
           <span
-            className={`${
-              severity === "Moderate"
-                ? "text-moderate"
-                : severity === "Mild"
-                ? "text-mild"
-                : severity === "Severe"
-                ? "text-severe"
-                : ""
-            } text-sm font-thin pr-1 flex lg:text-base items-center justify-end col-start-4 row-start-1`}
+            className={` pr-1 flex text-links-hover text-2xl items-center justify-end col-start-4 row-start-1 row-span-2 animate-[arrow_1s_ease-out_infinite]`}
             // } text-sm font-thin pr-1 flex items-center justify-end`}
           >
-            {severity}
+            <FontAwesomeIcon icon={faAngleRight} />
           </span>
         </div>
       </li>

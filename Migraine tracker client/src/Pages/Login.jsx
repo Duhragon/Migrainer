@@ -1,11 +1,32 @@
+import { useEffect, useState } from "react";
 import LoginForm from "../Components/LoginForm";
 
 function Login() {
+  const [contentHeight, setContentHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    // Function to update the content height when the window is resized
+    const updateContentHeight = () => {
+      setContentHeight(window.innerHeight);
+    };
+
+    // Attach an event listener for window resize
+    window.addEventListener("resize", updateContentHeight);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", updateContentHeight);
+    };
+  }, []);
+
   return (
-    <div className="lg:p-4 p-2 w-full lg:flex h-[100vh] bg-bg-primary items-center justify-center">
+    <div
+      className="lg:p-4 p-2 w-full lg:flex h-[100vh] bg-bg-primary items-center justify-center"
+      style={{ height: `${contentHeight}px` }}
+    >
       {/* Left */}
       <div className="lg:w-6/12 bg-bg-secondary gap-6 items-center lg:flex-col flex flex-col sm:flex-row sm:gap-20 rounded-t-3xl lg:rounded-l-3xl lg:rounded-r-none lg:h-full h-2/4 justify-center ">
-        <img src="../../public/Logo.png" className="h-32 sm:h-40 lg:h-60 animate-bounce" />
+        <img src="Logo.png" className="h-32 sm:h-40 lg:h-60 animate-bounce" />
         <div className="flex flex-col items-center gap-3 sm:gap-4">
           <h1 className="text-text-primary text-2xl sm:text-4xl md:text-5xl  font-bold">Migrainer</h1>
           <p className="text-text-light text-xs md:text-base italic self-start">Your migraine assistant...</p>

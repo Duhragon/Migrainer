@@ -8,12 +8,18 @@ function EpisodePreview() {
 
   return (
     // <div className="m-2 bg-bg-third md:w-6/12">
-    <div className=" py-1 mt-5 pb-4 mx-3 md:mr-0 rounded bg-bg-third md:w-full h-fit ">
-      <h2 className="flex items-center py-2  px-8 text-lg font-semibold tracking-wider">Episodes:</h2>
-      <ul className="min-h-fit max-h-80  px-1 sm:px-3 sm:py-1 overflow-auto">
-        {episodes.map((episode, index) => (
-          <EpisodeDetails item={episode} i={index} key={episode._id} />
-        ))}
+    <div className="  mt-7 mx-3 md:mr-0 rounded-lg bg-bg-third md:w-full h-fit ">
+      <h2 className="flex items-center py-2 border-b border-bg-secondary px-8 text-lg md:text-xl font-semibold tracking-wider">
+        Migraine Episodes:
+      </h2>
+      <ul className=" h-80  mb-3 overflow-auto">
+        {episodes?.length === 0 ? (
+          <p className="h-full flex items-center justify-center p-5">
+            Have you been experiencing migraines ? Let's start tracking them by selecting a date
+          </p>
+        ) : (
+          episodes?.map((episode, index) => <EpisodeDetails item={episode} i={index} key={episode._id} />)
+        )}
       </ul>
     </div>
   );

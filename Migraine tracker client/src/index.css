@@ -27,7 +27,7 @@
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
     /* Width of the scrollbar */
   }
 
@@ -38,7 +38,7 @@
 
   /* Handle (thumb) */
   ::-webkit-scrollbar-thumb {
-    background: #7a5af5; /* Color of the scrollbar handle */
+    background: #ba9ffb; /* Color of the scrollbar handle */
     border-radius: 4px; /* Round the edges of the handle */
   }
 
@@ -83,6 +83,7 @@
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+    color: #201a2d;
   }
 
   @keyframes rotation {
