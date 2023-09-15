@@ -13,6 +13,9 @@ export default {
           "50%": { transform: "rotate(4deg)" },
         },
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"], // 'cal-sans' is the class name, 'Cal Sans' is the font family name
+      },
 
       colors: {
         "bg-primary": "#121212",
@@ -21,6 +24,7 @@ export default {
         "bg-fourth": "#3a3645",
         "bg-hover": "#262036",
         "input-text": "#2f2b3a",
+        gradient: "#6d4f99",
         "text-primary": "#F4EEE0",
         "text-light": "#908d96",
         "text-secondary": "#b3b0a7",
@@ -41,3 +45,6 @@ export default {
   },
   plugins: [],
 };
+
+// background: #1A1625;
+// background: linear-gradient(315deg, #1A1625, #7B5AF5);

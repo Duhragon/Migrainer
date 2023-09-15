@@ -25,7 +25,7 @@ function Register() {
       <div className="bg-bg-secondary md:h-full h-44 flex md:flex-col w-full md:w-6/12 items-center justify-center">
         <img src="Logo.png" className="h-24 pr-8 md:pr-0  sm:h-40 animate-bounce" />
         <div className="flex flex-col items-center gap-1 md:mt-8 sm:gap-3">
-          <h1 className="text-text-primary text-xl sm:text-3xl md:text-4xl  font-bold">Migrainer</h1>
+          <h1 className="text-text-primary text-xl sm:text-3xl md:text-4xl  font-bold">Migrainer.</h1>
           <p className="text-text-light text-xs md:text-base italic">Your migraine assistant...</p>
         </div>
       </div>

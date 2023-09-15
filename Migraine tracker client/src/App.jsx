@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { getUser } from "./Redux/userSlice";
 import TopBanner from "./Dashboard/TopBanner";
 import EditProfile from "./Pages/EditProfile";
-import "./CustomCalendar.css";
+import "../src/CustomCss/CustomCalendar.css";
 import { useEffect, useState } from "react";
 
 function Layout() {
@@ -41,7 +41,6 @@ function Layout() {
           <main className="overflow-y-auto overflow-x-hidden">
             <Outlet />
           </main>
-          {/* <Footer /> */}
         </div>
       ) : (
         <Navigate to={"/login"} state={{ from: location }} replace />

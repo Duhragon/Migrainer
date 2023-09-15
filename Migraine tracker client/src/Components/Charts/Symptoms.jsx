@@ -1,6 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { VictoryPie, VictoryTooltip } from "victory";
+import {
+  VictoryAxis,
+  VictoryChart,
+  VictoryContainer,
+  VictoryPie,
+  VictoryTooltip,
+  VictoryVoronoiContainer,
+} from "victory";
 
 function Symptoms() {
   const customTooltipStyle = {
@@ -50,14 +57,19 @@ function Symptoms() {
   return (
     <div className="mx-3 my-3 sm:px-10 h-full ">
       <div className="chart-container h-fit flex flex-col md:flex-row md:justify-between">
-        <div className="  w-full h-fit md:w-7/12  md:mx-6 flex flex-col justify-center items-center">
+        <div className="  w-full h-fit md:w-7/12  sm:px-6 flex-col justify-center items-center">
           <div className=" rounded px-6 pb-2  flex flex-col justify-center" style={{ minHeight: "16rem" }}>
-            <h2 className="py-1 md:text-xl bg-bg-duration px-3 rounded text-lg font-bold tacking-wider ">
-              Analysis for {episodes.length} episodes
+            <h2 className="py-2  bg-bg-duration text-center px-3 font-semibold text-sm rounded">
+              Symptom pattern {episodes.length} episodes
             </h2>
-            <ul className="tracking-wider px-1">
+            <ul className="tracking-wider">
               {symptomsData.map((item, i) => (
-                <li key={i} className="flex  text-text-secondary text-sm  pb-1 items-center  rounded">
+                <li
+                  key={i}
+                  className={` ${
+                    i % 2 !== 0 ? "bg-bg-duration" : ""
+                  } flex text-text-secondary text-sm  py-1 px-3 items-center`}
+                >
                   {`${item.x.slice(0, 1).toUpperCase() + item.x.slice(1)} `}{" "}
                   <span className="inline-block  ml-auto mr-2">{item.y}x</span>
                   <span className={` w-3 h-3`} style={{ backgroundColor: colorData[i] }}></span>
@@ -68,19 +80,21 @@ function Symptoms() {
         </div>
         <div className="chart mx-auto">
           <VictoryPie
+            style={{ labels: { fill: "none" } }}
+            containerComponent={
+              <VictoryVoronoiContainer
+                style={{
+                  touchAction: "auto",
+                }}
+              />
+            }
             width={450} // Set the width here (e.g., 400 pixels)
             height={450} // Set the height here (e.g., 400 pixels)
             // labelComponent={<VictoryTooltip />}
             colorScale={colorData}
-            labelComponent={
-              <VictoryTooltip
-                // flyoutWidth={75} // Set the tooltip width as needed
-                flyoutHeight={50} // Set the tooltip height as needed
-                style={customTooltipStyle} // Apply custom styles
-              />
-            }
             data={symptomsData}
           />
+
           <ul>
             <></>
           </ul>

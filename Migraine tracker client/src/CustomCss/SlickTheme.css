@@ -90,7 +90,7 @@
 
 .slick-next {
   color: #ba9ffb;
-  right: 30px;
+  right: 10px;
   animation: slideAnimation 1s ease-out infinite;
 }
 [dir="rtl"] .slick-next {

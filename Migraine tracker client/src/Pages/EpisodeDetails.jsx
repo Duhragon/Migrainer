@@ -38,7 +38,7 @@ function EpisodeDetails({ item, i }) {
       <li className="cursor-pointer bg-bg-third md:text-lg p-4 transition-all hover:bg-bg-hover">
         {/* <div className="flex justify-between font-thin"> */}
         <div className="grid grid-cols-4 text-text-secondary hover:text-text-primary justify-between transition-all">
-          <p className="col-span-3 sm:text-lg">{formattedDate}</p>
+          <p className="col-span-3  text-base">{formattedDate}</p>
           <p className=" text-text-light md:mt-1 text-xs col-start-1 col-span-3 pr-1 flex items-center">
             <span className="bg-bg-duration py-1 px-2 rounded-md">
               {duration} {duration > 1 ? "hours" : "hour"}{" "}

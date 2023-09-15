@@ -8,8 +8,8 @@ function EpisodePreview() {
 
   return (
     // <div className="m-2 bg-bg-third md:w-6/12">
-    <div className="  mt-7 mx-3 md:mr-0 rounded-lg bg-bg-third md:w-full h-fit ">
-      <h2 className="flex items-center py-2 border-b border-bg-secondary px-8 text-lg md:text-xl font-semibold tracking-wider">
+    <div className="mt-3 mx-3 sm:mr-0 rounded-lg sm:w-full bg-bg-third h-fit ">
+      <h2 className="flex items-center py-3 border-b border-bg-secondary pl-4 font-semibold text-sm  font tracking-wider">
         Migraine Episodes:
       </h2>
       <ul className=" h-80  mb-3 overflow-auto">

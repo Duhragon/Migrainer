@@ -1,8 +1,8 @@
 import Slider from "react-slick";
 import Activities from "./Activities";
 import Symptoms from "./Symptoms";
-import "../../../CustomSlick.css";
-import "../../../SlickTheme.css";
+import "../../CustomCss/CustomSlick.css";
+import "../../CustomCss/SlickTheme.css";
 import { useSelector } from "react-redux";
 
 function Charts() {
@@ -38,7 +38,7 @@ function Charts() {
           </section>
         </div>
       ) : (
-        <section className="h-fit flex-grow m-3 my-8 bg-bg-third rounded-xl">
+        <section className="h-fit flex-grow m-3 my-4 bg-bg-third rounded-xl">
           <Slider {...settings}>
             <Symptoms />
             <Activities />
