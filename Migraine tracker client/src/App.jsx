@@ -13,22 +13,20 @@ import "../src/CustomCss/CustomCalendar.css";
 import { useEffect, useState } from "react";
 
 function Layout() {
-  const [contentHeight, setContentHeight] = useState(window.innerHeight);
+  // useEffect(() => {
+  //   // Function to update the content height when the window is resized
+  //   const updateContentHeight = () => {
+  //     setContentHeight(window.innerHeight);
+  //   };
 
-  useEffect(() => {
-    // Function to update the content height when the window is resized
-    const updateContentHeight = () => {
-      setContentHeight(window.innerHeight);
-    };
+  //   // Attach an event listener for window resize
+  //   window.addEventListener("resize", updateContentHeight);
 
-    // Attach an event listener for window resize
-    window.addEventListener("resize", updateContentHeight);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("resize", updateContentHeight);
-    };
-  }, []);
+  //   // Clean up the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("resize", updateContentHeight);
+  //   };
+  // }, []);
 
   const user = useSelector(getUser);
   const location = useLocation();
@@ -36,9 +34,9 @@ function Layout() {
   return (
     <>
       {user.user?.token ? (
-        <div className="h-screen flex flex-col" style={{ height: `${contentHeight}px` }}>
+        <div className="flex flex-col h-[100vh]">
           <TopBanner />
-          <main className="overflow-y-auto overflow-x-hidden">
+          <main className="overflow-y-auto overflow-x-hidden h-[100%]">
             <Outlet />
           </main>
         </div>

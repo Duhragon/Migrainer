@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function EpisodePreview() {
   const { user } = useSelector(state => state.user);
   const { episodes } = user;
-  console.log(episodes);
 
   return (
     // <div className="m-2 bg-bg-third md:w-6/12">

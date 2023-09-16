@@ -1,74 +1,217 @@
-// function EpisodeForm() {
-//   return (
-//     <section className="flex bg-bg-third m-3">
-//       <h3>Fill the below form before submitting</h3>
+import { useForm, Controller } from "react-hook-form";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useEffect, useState } from "react";
+import InputFields from "../Components/InputFields";
+import Select from "react-select";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "react-day-picker";
 
-//     </section>
-//   );
-// }
+const severityOptions = [
+  { label: "Mild", value: "mild" },
+  { label: "Moderate", value: "moderate" },
+  { label: "severe", value: "severe" },
+];
 
-// export default EpisodeForm;
+const symptonmsList = [
+  { label: "headache", value: "headache" },
+  { label: "nausea", value: "nausea" },
+  { label: "auras", value: "auras" },
+  { label: "stiff-neck", value: "stiff-neck" },
+  { label: "yawning", value: "yawning" },
+  { label: "moodiness", value: "moodiness" },
+  { label: "light-senstitivity", value: "light-senstitivity" },
+  { label: "smell-sensitivity", value: "smell-sensitivity" },
+  { label: "eye-strain", value: "eye-strain" },
+];
+const activityList = [
+  { label: "Stress", value: "stress" },
+  { label: "Sleep", value: "sleep" },
+  { label: "light", value: "light" },
+  { label: "smell", value: "smell" },
+  { label: "dehydration", value: "dehydration" },
+  { label: "weather", value: "weather" },
+  { label: "exhaustion", value: "exhaustion" },
+  { label: "alcohol", value: "alcohol" },
+  { label: "caffeine", value: "caffeine" },
+  { label: "diet", value: "diet" },
+];
 
-import React from "react";
-import { useEffect, useRef } from "react";
-import Input from "./Input"; // new
+function EpisodeForm() {
+  const navigate = useNavigate();
 
-const EpisodeForm = props => {
-  // Creating refs for username and password
-  const userNameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    register,
+    reset,
+  } = useForm({ mode: "onChange" });
 
-  // We are also creating a reference to the Login button
-  const submitBtnRef = useRef(null);
-
-  // useEffect to set the initial focus to the user name input
-  useEffect(() => {
-    userNameRef.current.focus();
-  }, []);
-
-  // This function is used to handle the key press.
-  // Whenever user hits enter it moves to the next element
-  const handleKeyPress = (e, inputType) => {
-    if (e.key === "Enter") {
-      switch (inputType) {
-        // Checks if Enter pressed from the username field?
-        case "username":
-          // Moves the focus to the password input field
-          passwordRef.current.focus();
-          break;
-        // Checks if Enter pressed from the password field?
-        case "password":
-          // Moves the focus to the submit button
-          submitBtnRef.current.focus();
-          e.preventDefault();
-          break;
-        default:
-          break;
-      }
-    }
+  const defaultValues = {
+    symptoms: null,
+    activities: null,
+    severity: "",
+  };
+  const onSubmit = data => {
+    if (!data) return;
+    const episodesObj = {
+      date: data.date,
+      severity: data.severity,
+      duration: data.duration,
+      symptoms: data.symptoms,
+      activities: data.activities,
+    };
+    navigate("/");
+    reset(defaultValues);
+    console.log(episodesObj);
   };
 
-  // Function to handle the submit click from the button
-  const handleSubmit = () => {
-    alert("submitted");
-  };
-
-  // getting the style as prop from the parent.
-  // Basic style to center the element and apply a bg color
-  const { style } = props;
   return (
-    <div style={style}>
-      <h2>Example for using useRef Hook</h2>
-      <h3>Login</h3>
-      {/* New. Using the Component instead of input element */}
-      <Input type="text" name="username" ref={userNameRef} onKeyDown={e => handleKeyPress(e, "username")} />
-      {/* New. Using the Component instead of input element */}
-      <Input type="password" name="password" ref={passwordRef} onKeyDown={e => handleKeyPress(e, "password")} />
-      <button ref={submitBtnRef} onClick={handleSubmit}>
-        Login
-      </button>
+    <div className="flex justify-center items-center h-full">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className=" bg-bg-third w-[90%] sm:w-[80%] flex flex-col p-10 rounded-lg h-[90%] justify-center gap-4 md:w-[60%]"
+      >
+        {/* Date */}
+        <section className="flex flex-col sm:flex-row ">
+          <label className=" lg:text-lg sm:min-w-[35%]">When did it occur ?</label>
+          <Controller
+            name="date"
+            control={control}
+            errors={errors}
+            render={({ field }) => (
+              <DatePicker
+                className="text-text-third text-input-text w-full p-2 rounded"
+                placeholderText="Click to select a date"
+                isClearable
+                dateFormat="dd/MM/yyyy"
+                maxDate={new Date()}
+                todayButton="Today"
+                selected={field.value}
+                onChange={date => field.onChange(date)}
+                required
+              />
+            )}
+          />
+        </section>
+
+        {/* Severity */}
+        <section className="flex flex-col sm:flex-row">
+          <label className=" lg:text-lg sm:min-w-[35%]">Severity</label>
+          <Controller
+            name="severity"
+            control={control}
+            render={({ field }) => (
+              <Select
+                className="text-text-third text-input-text sm:w-full"
+                isClearable={true}
+                options={severityOptions}
+                defaultValue=""
+                required
+                value={field.value !== "" ? severityOptions.find(option => option.value === field.value) : ""}
+                onChange={option => field.onChange(option ? option.value : "")}
+                placeholder="Severity.."
+              />
+            )}
+          />
+        </section>
+
+        {/* duration */}
+        <section className="flex flex-col sm:flex-row">
+          <label className="lg:text-lg sm:min-w-[35%]">Duration (hours)</label>
+
+          <Controller
+            name="duration"
+            control={control}
+            render={() => (
+              <div className="flex flex-col text-text-third text-input-text sm:w-full">
+                <input
+                  className="text-text-third text-input-text p-2 rounded"
+                  type="duration"
+                  placeholder="duration"
+                  {...register("duration", {
+                    required: "duration required",
+                    maxLength: {
+                      value: 2,
+                      message: "Max length 2",
+                    },
+                  })}
+                />
+                {errors?.duration && (
+                  <span className="text-red-400 text-sm md:text-base lg:text-lg">{errors.duration?.message}</span>
+                )}
+              </div>
+            )}
+          />
+        </section>
+
+        {/* symptoms */}
+        <section className="flex flex-col sm:flex-row">
+          <label className="lg:text-lg sm:min-w-[35%]">Symptoms</label>
+          <Controller
+            name="symptoms"
+            control={control}
+            render={({ field }) => (
+              <Select
+                className="text-text-third text-input-text sm:w-full "
+                closeMenuOnSelect={false}
+                isMulti
+                defaultValue={null}
+                options={symptonmsList}
+                // value={symptonmsList.find(options => options.value === field.value)}
+                // value={field.value}
+                value={
+                  Array.isArray(field.value) ? symptonmsList.filter(option => field.value.includes(option.value)) : null
+                }
+                onChange={selectedOptions => {
+                  const selectedValues = selectedOptions.map(option => option.value);
+                  field.onChange(selectedValues);
+                }}
+                placeholder="Symptoms..."
+                required
+              />
+            )}
+          />
+        </section>
+
+        {/* triggers */}
+        <section className="flex flex-col sm:flex-row">
+          <label className="lg:text-lg sm:min-w-[35%]">Trigger activities</label>
+          <Controller
+            name="activities"
+            control={control}
+            render={({ field }) => (
+              <Select
+                name="activities"
+                className="text-text-third text-input-text sm:w-full"
+                closeMenuOnSelect={false}
+                isMulti
+                defaultValue=""
+                options={activityList}
+                value={
+                  Array.isArray(field.value) ? activityList.filter(option => field.value.includes(option.value)) : null
+                }
+                onChange={selectedOptions => {
+                  const selectedValues = selectedOptions.map(option => option.value);
+                  field.onChange(selectedValues);
+                }}
+                required
+                placeholder="Activities..."
+              />
+            )}
+          />
+        </section>
+
+        <div className="flex flex-row gap-4 justify-center mt-5">
+          <input className="button-style" type="submit"></input>
+          <Link to={"/"} className="button-style">
+            Go Back
+          </Link>
+        </div>
+      </form>
     </div>
   );
-};
+}
 
 export default EpisodeForm;

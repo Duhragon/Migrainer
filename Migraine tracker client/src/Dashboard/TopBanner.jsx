@@ -7,7 +7,6 @@ import { LuLogOut } from "react-icons/lu";
 function TopBanner() {
   const { user } = useSelector(state => state.user);
   const dispatch = useDispatch();
-  console.log(user);
 
   return (
     <div className="w-full px-3 py-2 bg-bg-third border-b-2 border-bg-secondary">

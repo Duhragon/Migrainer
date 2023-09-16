@@ -35,8 +35,6 @@ function Symptoms() {
     x: symptom,
     y: finalSymptoms[symptom],
   }));
-
-  console.log(finalSymptoms);
   console.log(symptomsData);
 
   const colorData = [
@@ -51,8 +49,6 @@ function Symptoms() {
     "#908d96",
     "#965faf",
   ];
-
-  console.log(symptomsData.map(item => item.x));
 
   return (
     <div className="mx-3 my-3 sm:px-10 h-full ">

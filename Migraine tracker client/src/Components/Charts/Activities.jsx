@@ -118,6 +118,8 @@ function Activities() {
     y: finalActivities[activity],
   }));
 
+  console.log(activitiesData);
+
   const colorData = [
     "#5f8baf",
     "#a688fa",

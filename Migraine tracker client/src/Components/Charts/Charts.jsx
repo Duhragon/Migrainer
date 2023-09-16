@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 function Charts() {
   const { episodes } = useSelector(state => state.user.user);
-  console.log(episodes);
 
   const settings = {
     infinite: true,
