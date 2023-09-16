@@ -21,22 +21,15 @@ function Charts() {
     <div className=" flex flex-col">
       {episodes.length === 0 ? (
         // Filler container in case there are no episodes
-        <div className="flex flex-grow tracking-wide  items-center border-2 border-links rounded h-[12rem] justify-center  mx-3 my-6">
-          <section className="text-center  h-full flex w-full flex-col justify-around">
-            <div className="font-thin px-5 text-text-light">
-              <h2 className="text-sm  sm:text-lg md:text-xl py-5 pb-1 sm:pb-3">
-                Wouldn't it be great to have insights for your Migraine episodes?
-              </h2>
-              <p className="text-xs md:text-base pb-2 sm:pb-4">
-                Start by selecing a date, and you'll find them right here.
-              </p>
-            </div>
-            <p className="bg-bg-secondary px-4 py-3 text-sm sm:text-base w-full mt-auto">
-              <span className="font-thin">Did you know:</span> Migraines rank as the third most prevalent illness in the
-              entire world.
-            </p>
-          </section>
-        </div>
+        <section className="flex p-4 flex-col sm:flex-row flex-grow items-center  rounded-lg bg-bg-third sm:justify-around mx-3 my-4 sm:bg-gradient-to-r from-bg-secondary from-1% via-bg-third via-60% to-bg-third ">
+          <img src="lock.png" className="animate-pulse h-32 sm:h-40" />
+          <p className=" text-text-light text-sm  text-center flex flex-col py-1">
+            Migraines can be disabling.
+            <span className="mt-2 py-2 px-3 rounded bg-bg-hover sm:bg-opacity-0	 text-text-primary">
+              Manage migraines by unlocking insights with a few episodes.
+            </span>
+          </p>
+        </section>
       ) : (
         <section className="h-fit flex-grow m-3 my-4 bg-bg-third rounded-xl">
           <Slider {...settings}>
@@ -50,3 +43,10 @@ function Charts() {
 }
 
 export default Charts;
+{
+  /* <div className="flex flex-grow tracking-wide  items-center border-2 border-links rounded justify-center  mx-3 my-6"> */
+}
+
+{
+  /* </div> */
+}

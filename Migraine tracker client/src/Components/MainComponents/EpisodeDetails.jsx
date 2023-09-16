@@ -58,7 +58,7 @@ function EpisodeDetails({ item, i }) {
             </span>
           </p>
           <span
-            className={` pr-1 flex text-links-hover text-2xl items-center justify-end col-start-4 row-start-1 row-span-2 animate-[arrow_1s_ease-out_infinite]`}
+            className={` pr-1 flex text-links-hover text-2xl items-center justify-end col-start-4 row-start-1 row-span-2 animate-[r-arrow_1s_ease-out_infinite]`}
             // } text-sm font-thin pr-1 flex items-center justify-end`}
           >
             <FontAwesomeIcon icon={faAngleRight} />

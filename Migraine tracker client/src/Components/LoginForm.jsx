@@ -19,9 +19,9 @@ const LoginForm = () => {
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  //   useEffect(function () {
-  //     emailRef.current.focus();
-  //   }, []);
+  // useEffect(function () {
+  //   emailRef.current.focus();
+  // }, []);
 
   return (
     <div className="flex items-center justify-center w-full">

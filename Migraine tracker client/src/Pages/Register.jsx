@@ -21,22 +21,22 @@ function Register() {
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [contentHeight, setContentHeight] = useState(window.innerHeight);
+  // const [contentHeight, setContentHeight] = useState(window.innerHeight);
 
-  useEffect(() => {
-    // Function to update the content height when the window is resized
-    const updateContentHeight = () => {
-      setContentHeight(window.innerHeight);
-    };
+  // useEffect(() => {
+  //   // Function to update the content height when the window is resized
+  //   const updateContentHeight = () => {
+  //     setContentHeight(window.innerHeight);
+  //   };
 
-    // Attach an event listener for window resize
-    window.addEventListener("resize", updateContentHeight);
+  //   // Attach an event listener for window resize
+  //   window.addEventListener("resize", updateContentHeight);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("resize", updateContentHeight);
-    };
-  }, []);
+  //   // Clean up the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("resize", updateContentHeight);
+  //   };
+  // }, []);
 
   //   useEffect(function () {
   //     emailRef.current.focus();
@@ -46,7 +46,7 @@ function Register() {
     <div className="overflow-x-hidden">
       <div
         className=" h-screen p-5 flex flex-col md:flex-row items-center justify-center bg-bg-primary "
-        style={{ height: `${contentHeight}px` }}
+        // style={{ height: `${contentHeight}px` }}
       >
         <div className="bg-bg-secondary md:rounded-l-xl md:rounded-r-none md:h-full h-44 flex md:flex-col w-full md:w-6/12 items-center  rounded-t-xl justify-center">
           <img src="Logo.png" className="h-24 sm:py-3 pr-8 md:pr-0  sm:h-40 animate-bounce" />

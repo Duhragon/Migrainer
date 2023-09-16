@@ -4,9 +4,13 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        arrow: {
+        "r-arrow": {
           "0%, 100%": { transform: "translateX(0px)" },
           "50%": { transform: "translateX(5px)" },
+        },
+        "d-arrow": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(5px)" },
         },
         bounce: {
           "0%, 100%": { transform: "rotate(-4deg)" },

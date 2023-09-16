@@ -1,7 +1,7 @@
 import { Outlet, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import EpisodeForm from "./Pages/EpisodeForm";
-import EpisodeDetails from "./Pages/EpisodeDetails";
+import EpisodeDetails from "./Components/MainComponents/EpisodeDetails";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import ResetPassword from "./Pages/ResetPassword";
