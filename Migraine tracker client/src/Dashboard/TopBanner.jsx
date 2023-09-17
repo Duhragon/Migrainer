@@ -3,13 +3,14 @@ import { user } from "../../assets/data";
 import { Link } from "react-router-dom";
 import { logout } from "../Redux/userSlice";
 import { LuLogOut } from "react-icons/lu";
+import { forwardRef } from "react";
 
-function TopBanner() {
+const TopBanner = forwardRef((props, ref) => {
   const { user } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full px-3 py-2 bg-bg-third border-b-2 border-bg-secondary">
+    <div ref={ref} className="w-full px-3 py-2 bg-bg-third border-b-2 border-bg-secondary">
       <div className="flex justify-between">
         <div className="flex items-center justify-center ">
           <h1 className="">
@@ -32,6 +33,8 @@ function TopBanner() {
       </div>
     </div>
   );
-}
+});
+
+TopBanner.displayName = "TopBanner";
 
 export default TopBanner;

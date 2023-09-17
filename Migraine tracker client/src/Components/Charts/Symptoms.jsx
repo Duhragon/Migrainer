@@ -35,7 +35,6 @@ function Symptoms() {
     x: symptom,
     y: finalSymptoms[symptom],
   }));
-  console.log(symptomsData);
 
   const colorData = [
     "#5f8baf",

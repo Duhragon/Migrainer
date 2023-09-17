@@ -118,7 +118,7 @@ function Activities() {
     y: finalActivities[activity],
   }));
 
-  console.log(activitiesData);
+  // console.log(activitiesData);
 
   const colorData = [
     "#5f8baf",

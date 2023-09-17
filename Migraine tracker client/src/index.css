@@ -67,10 +67,10 @@
 
 @layer components {
   .button-style {
-    @apply py-1 px-2 rounded bg-button-primary  md:text-lg lg:text-xl  md:px-3 font-semibold cursor-pointer hover:bg-button-p-hover transition-all;
+    @apply py-1 px-2 rounded bg-button-primary text-text-primary tracking-wide cursor-pointer font-semibold hover:bg-button-p-hover transition-all;
   }
   .button-dark {
-    @apply px-2 rounded bg-button-dark text-text-light text-sm sm:text-base lg:text-xl font-semibold cursor-pointer hover:bg-button-d-hover transition-all;
+    @apply px-2 py-1 rounded bg-button-dark text-text-light tracking-wide font-semibold cursor-pointer hover:bg-button-d-hover transition-all;
   }
 
   .loader {
@@ -84,6 +84,8 @@
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
     color: #201a2d;
+
+    color: #2c253e;
   }
 
   @keyframes rotation {

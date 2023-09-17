@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import EpisodeDetails from "./EpisodeDetails";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import EpisodeItems from "../MainComponents/EpisodeItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function EpisodePreview() {
@@ -11,7 +11,7 @@ function EpisodePreview() {
     // <div className="m-2 bg-bg-third md:w-6/12">
     <div className="mt-3 mx-3 sm:mr-0 rounded-lg sm:w-full bg-bg-third h-fit ">
       <h2 className="flex items-center py-3 border-b border-bg-secondary pl-4 font-semibold text-sm  font tracking-wider">
-        Migraine Episodes:
+        Migraine Episodes recorded: {episodes?.length}
       </h2>
       <ul className=" h-80  mb-3 overflow-auto">
         {episodes?.length === 0 ? (
@@ -38,7 +38,7 @@ function EpisodePreview() {
             </span>
           </div>
         ) : (
-          episodes?.map((episode, index) => <EpisodeDetails item={episode} i={index} key={episode._id} />)
+          episodes?.map((episode, index) => <EpisodeItems item={episode} i={index} key={episode._id} />)
         )}
       </ul>
     </div>
