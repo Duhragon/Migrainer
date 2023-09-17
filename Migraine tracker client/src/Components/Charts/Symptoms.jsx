@@ -1,23 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import {
-  VictoryAxis,
-  VictoryChart,
-  VictoryContainer,
-  VictoryPie,
-  VictoryTooltip,
-  VictoryVoronoiContainer,
-} from "victory";
+import { VictoryPie, VictoryVoronoiContainer } from "victory";
 
 function Symptoms() {
-  const customTooltipStyle = {
-    // fill: "white",
-    stroke: "black",
-    strokeWidth: 1,
-    fontSize: 25, // Adjust the font size as needed
-    padding: 0, // Adjust the padding as needed
-  };
-
   const { episodes } = useSelector(state => state.user.user);
 
   const symptoms = episodes.map(item => item.symptoms);

@@ -2,8 +2,11 @@ import { useSelector } from "react-redux";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import EpisodeItems from "../MainComponents/EpisodeItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import Loading from "../Loading";
 
 function EpisodePreview() {
+  const [loading, setLoading] = useState(false);
   const { user } = useSelector(state => state.user);
   const { episodes } = user;
 
@@ -36,6 +39,10 @@ function EpisodePreview() {
             >
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
+          </div>
+        ) : loading ? (
+          <div className="h-full flex justify-center items-center">
+            <Loading />
           </div>
         ) : (
           episodes?.map((episode, index) => <EpisodeItems item={episode} i={index} key={episode._id} />)

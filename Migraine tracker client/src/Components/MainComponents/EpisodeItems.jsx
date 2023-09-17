@@ -31,7 +31,7 @@ function EpisodeDetails({ item, i }) {
                     : severity === "Severe"
                     ? "text-severe"
                     : ""
-                } ml-3 tracking-wide`}
+                } ml-1 tracking-wide`}
               >
                 ({severity})
               </span>

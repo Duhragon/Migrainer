@@ -4,9 +4,12 @@ import Symptoms from "./Symptoms";
 import "../../CustomCss/CustomSlick.css";
 import "../../CustomCss/SlickTheme.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import Loading from "../Loading";
 
 function Charts() {
   const { episodes } = useSelector(state => state.user.user);
+  const [loading, setLoading] = useState(false);
 
   const settings = {
     infinite: true,
@@ -30,11 +33,19 @@ function Charts() {
           </p>
         </section>
       ) : (
-        <section className="h-fit flex-grow m-3 my-4 bg-bg-third rounded-xl">
-          <Slider {...settings}>
-            <Symptoms />
-            <Activities />
-          </Slider>
+        <section className="h-full flex-grow m-3 my-4 bg-bg-third rounded-xl">
+          {loading ? (
+            <div className="flex h-40 justify-center items-center">
+              <Loading />
+            </div>
+          ) : (
+            <>
+              <Slider {...settings}>
+                <Symptoms />
+                <Activities />
+              </Slider>
+            </>
+          )}
         </section>
       )}
     </div>
