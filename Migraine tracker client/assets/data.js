@@ -1,28 +1,3 @@
-// const symptonmsList = [
-//   "headache",
-//   "nausea",
-//   "auras",
-//   "stiff neck",
-//   "yawning",
-//   "moodiness",
-//   "light sensitivity",
-//   "weather sensitivity",
-//   "smell sensitivity",
-//   "weather sensitivity",
-// ];
-// const acitivitList = [
-//   "stress",
-//   "sleep changes",
-//   "light exposure",
-//   "smell exposure",
-//   "dehydration",
-//   "weather changes",
-//   "exhaustion",
-//   "alcohol",
-//   "caffiene",
-//   "diet changes",
-// ];
-
 export const user = {
   _id: "64df3c064180b81adfe41d4b",
   firstName: "Shubham",

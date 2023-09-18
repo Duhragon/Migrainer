@@ -175,7 +175,7 @@ function EpisodeForm() {
           />
         </section>
 
-        {/* triggers */}
+        {/* triggers/activities */}
         <section className="flex flex-col sm:flex-row">
           <label className="lg:text-lg sm:min-w-[35%]">Trigger activities</label>
           <Controller

@@ -11,7 +11,6 @@ function EpisodeDetails({ deletePost }) {
   const { episodes } = useSelector(state => state.user.user);
   const { episodeId } = useParams();
   const [topBannerRef] = useOutletContext();
-
   const [contentHeight, setContentHeight] = useState(0);
 
   useEffect(() => {
@@ -39,6 +38,9 @@ function EpisodeDetails({ deletePost }) {
 
   const currDate = createDate(currEpisode);
   if (!currEpisode) return <span>No episode found!!</span>;
+
+  const key = crypto.randomUUID();
+  console.log(key);
 
   return (
     <div
