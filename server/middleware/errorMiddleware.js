@@ -1,21 +1,51 @@
-//Error middleware | next function
+// //Error middleware | next function
+
+// const errorMiddleware = (err, req, res, next) => {
+//   const defaultError = {
+//     statusCode: 404,
+//     succes: "failed",
+//     message: err,
+//   };
+
+//   if (err?.name === "ValidationError") {
+//     defaultError.statusCode = 404;
+
+//     defaultError.message = Object.values(err, errors)
+//       .map(el => el.message)
+//       .join(",");
+//   }
+
+//   //duplicate error
+
+//   if (err.code && err.code === 11000) {
+//     defaultError.statusCode = 404;
+//     defaultError.message = `${Object.values(err.keyValue)} field has to be unique!`;
+//   }
+
+//   res.status(defaultError.statusCode).json({
+//     success: defaultError.success,
+//     message: defaultError.message,
+//   });
+// };
+
+// export default errorMiddleware;
 
 const errorMiddleware = (err, req, res, next) => {
   const defaultError = {
     statusCode: 404,
-    succes: "failed",
+    success: "failed", // Fix the property name here
     message: err,
   };
 
   if (err?.name === "ValidationError") {
     defaultError.statusCode = 404;
 
-    defaultError.message = Object.values(err, errors)
+    defaultError.message = Object.values(err.errors) // Fix the property name here
       .map(el => el.message)
       .join(",");
   }
 
-  //duplicate error
+  // Duplicate error
 
   if (err.code && err.code === 11000) {
     defaultError.statusCode = 404;
@@ -23,7 +53,7 @@ const errorMiddleware = (err, req, res, next) => {
   }
 
   res.status(defaultError.statusCode).json({
-    success: defaultError.succes,
+    success: defaultError.success,
     message: defaultError.message,
   });
 };
