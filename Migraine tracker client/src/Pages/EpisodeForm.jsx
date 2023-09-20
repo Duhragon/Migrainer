@@ -128,7 +128,7 @@ function EpisodeForm() {
               <div className="flex flex-col text-text-third text-input-text sm:w-full">
                 <input
                   className="text-text-third text-input-text p-2 rounded"
-                  type="duration"
+                  type="number"
                   placeholder="duration"
                   {...register("duration", {
                     required: "duration required",

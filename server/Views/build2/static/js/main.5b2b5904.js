@@ -8301,7 +8301,7 @@
         v = u((0, e.useState)(null), 2),
         g = v[0],
         y = v[1],
-        b = "https://test-migrainer.netlify.app/login",
+        b = "https://codewave-socialmedia.netlify.app/login",
         w = (function () {
           var e,
             t =
@@ -8323,8 +8323,7 @@
                           return (
                             (e.prev = 8),
                             (e.next = 11),
-                            // fetch("https://mernstack-socialmedia.onrender.com/users/reset-password", {
-                            fetch("http://localhost:8800/users/reset-password", {
+                            fetch("https://mernstack-socialmedia.onrender.com/users/reset-password", {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
                               body: JSON.stringify({ userId: s, password: n }),
