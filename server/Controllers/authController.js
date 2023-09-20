@@ -45,7 +45,10 @@ export const login = async (req, res, next) => {
     }
 
     //find user by email
-    const user = await Users.findOne({ email }).select("+password");
+    const user = await Users.findOne({ email }).select("+password").populate({
+      path: "episodes",
+      select: "duration date severity symptoms triggers",
+    });
 
     if (!user) {
       next("Invalid email or password");

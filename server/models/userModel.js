@@ -26,8 +26,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "Avatar is required!"],
     },
     verified: { type: Boolean, default: false },
-    episodes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Episodes" }],
-    episodes: [],
+    episodes: [{ type: Schema.Types.ObjectId, ref: "Episodes" }],
   },
   { timestamps: true }
 );

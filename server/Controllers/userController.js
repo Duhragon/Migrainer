@@ -173,21 +173,17 @@ export const changePassword = async (req, res) => {
 
 export const getUser = async (req, res, next) => {
   try {
-    const { userId } = req.params; // Use req.params to get the userId from the URL
-    const user = await Users.findById(userId); // Use the model to query the database
+    const { userId } = req.body.user;
+    const { id } = req.params; // Use req.params to get the userId from the URL
+    const user = await Users.findById(userId).populate("episodes"); // Use the model to query the database
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Customize the user data fields you want to include in the response.
-    const userData = {
-      user, //returning the entire user object as userData
-    };
-
     res.status(200).json({
       success: true,
-      data: userData,
+      user: user,
     });
   } catch (error) {
     console.error(error);
