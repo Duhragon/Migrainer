@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
 import Loading from "../Components/Loading";
 import Footer from "../Dashboard/Footer";
+import { apiRequest } from "../Utils/index.js";
 
 function Register() {
   const emailRef = useRef(null);
@@ -17,9 +18,40 @@ function Register() {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
-  const onSubmit = async function (data) {};
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async function (data) {
+    const transformedD = {
+      ...data,
+      firstName: data.firstName[0].toUpperCase() + data.firstName.slice(1).toLowerCase(),
+      lastName: data.lastName[0].toUpperCase() + data.lastName.slice(1).toLowerCase(),
+      email: data.email.toLowerCase(),
+    };
+    setIsSubmitting(true);
+
+    try {
+      const res = await apiRequest({
+        url: "/auth/register",
+        data: transformedD,
+        method: "POST",
+      });
+      console.log(res);
+      if (res?.status === "failed") {
+        setErrMsg(res);
+      } else {
+        setErrMsg(res);
+        console.log(res);
+        setTimeout(() => {
+          window.location.replace("/login");
+        }, 1500);
+      }
+      setIsSubmitting(false);
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+    }
+  };
 
   // const [contentHeight, setContentHeight] = useState(window.innerHeight);
 
@@ -160,7 +192,7 @@ function Register() {
                   </Link>
                   {/* </div> */}
                 </div>
-                {errMsg?.message && <span>{errMsg?.message}</span>}
+                {errMsg?.message && <span className="text-links-hover text-sm mx-auto">{errMsg?.message}.</span>}
               </form>
             </div>
           </div>

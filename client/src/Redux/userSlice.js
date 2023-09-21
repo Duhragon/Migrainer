@@ -6,6 +6,7 @@ const initialState = {
   edit: false,
 };
 
+console.log(initialState.user);
 const userSlice = createSlice({
   name: "user",
   initialState,

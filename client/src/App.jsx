@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, Navigate, useLocation, useNavigation } from "react-router-dom";
 import Home from "./Pages/Home";
 import EpisodeForm from "./Pages/EpisodeForm";
 import EpisodeDetails from "../src/Pages/EpisodeDetails";
@@ -13,24 +13,10 @@ import "../src/CustomCss/CustomCalendar.css";
 import { useEffect, useRef, useState } from "react";
 
 function Layout() {
-  // useEffect(() => {
-  //   // Function to update the content height when the window is resized
-  //   const updateContentHeight = () => {
-  //     setContentHeight(window.innerHeight);
-  //   };
-
-  //   // Attach an event listener for window resize
-  //   window.addEventListener("resize", updateContentHeight);
-
-  //   // Clean up the event listener when the component unmounts
-  //   return () => {
-  //     window.removeEventListener("resize", updateContentHeight);
-  //   };
-  // }, []);
-
   const user = useSelector(getUser);
   const location = useLocation();
   const topBannerRef = useRef(null);
+  const episode = useSelector(state => state.episode.episode);
 
   return (
     <>

@@ -3,9 +3,9 @@ import { sendVerificationEmail } from "../Utils/sendEmail.js";
 import Users from "../models/userModel.js";
 
 export const register = async (req, res, next) => {
-  const { firstName, lastName, email, password, avatar } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
-  if (!firstName || !lastName || !email || !password || !avatar) {
+  if (!firstName || !lastName || !email || !password) {
     next("Provide required fields!");
     return;
   }
@@ -23,7 +23,7 @@ export const register = async (req, res, next) => {
       lastName,
       email,
       password: hashedPassword,
-      avatar,
+      // avatar,
     });
 
     //send Email to user
@@ -47,7 +47,7 @@ export const login = async (req, res, next) => {
     //find user by email
     const user = await Users.findOne({ email }).select("+password").populate({
       path: "episodes",
-      select: "duration date severity symptoms triggers",
+      select: "duration date severity symptoms activities",
     });
 
     if (!user) {

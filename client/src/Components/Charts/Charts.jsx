@@ -8,7 +8,7 @@ import { useState } from "react";
 import Loading from "../Loading";
 
 function Charts() {
-  const { episodes } = useSelector(state => state.user.user);
+  const episodes = useSelector(state => state.episode.episode);
   const [loading, setLoading] = useState(false);
 
   const settings = {

@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import InputFields from "./InputFields";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Loading from "./Loading";
+import { apiRequest } from "../Utils";
+import { login } from "../Redux/userSlice.js";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const [errMsg, setErrMsg] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
@@ -15,13 +21,34 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
-  const onSubmit = async function (data) {};
-  const [errMsg, setErrMsg] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const onSubmit = async function (data) {
+    const transformedD = {
+      ...data,
+      email: data.email.toLowerCase(),
+    };
+    setIsSubmitting(true);
+    try {
+      const res = await apiRequest({
+        url: "/auth/login",
+        data: transformedD,
+        method: "POST",
+      });
 
-  // useEffect(function () {
-  //   emailRef.current.focus();
-  // }, []);
+      if (res?.status === "failed") {
+        setErrMsg(res);
+      } else {
+        setErrMsg("");
+
+        const newData = { token: res?.token, ...res?.user };
+        dispatch(login(newData));
+        window.location.replace("/");
+      }
+      setIsSubmitting(false);
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="flex items-center justify-center w-full">

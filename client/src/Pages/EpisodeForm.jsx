@@ -2,15 +2,17 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
-import InputFields from "../Components/InputFields";
 import Select from "react-select";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "react-day-picker";
+import { apiRequest } from "../Utils";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../Components/Loading";
+import { setEpisode } from "../Redux/episodeSice";
 
 const severityOptions = [
-  { label: "Mild", value: "mild" },
-  { label: "Moderate", value: "moderate" },
-  { label: "severe", value: "severe" },
+  { label: "Mild", value: "Mild" },
+  { label: "Moderate", value: "Moderate" },
+  { label: "severe", value: "Severe" },
 ];
 
 const symptonmsList = [
@@ -38,7 +40,10 @@ const activityList = [
 ];
 
 function EpisodeForm() {
-  const navigate = useNavigate();
+  const user = useSelector(state => state.user.user);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
@@ -53,7 +58,9 @@ function EpisodeForm() {
     activities: null,
     severity: "",
   };
-  const onSubmit = data => {
+  const onSubmit = async data => {
+    setIsSubmitting(true);
+    setErrMsg("");
     if (!data) return;
     const episodesObj = {
       date: data.date,
@@ -62,9 +69,35 @@ function EpisodeForm() {
       symptoms: data.symptoms,
       activities: data.activities,
     };
-    navigate("/");
-    reset(defaultValues);
-    console.log(episodesObj);
+
+    try {
+      const res = await apiRequest({
+        url: "/episodes/create-episode",
+        data: episodesObj,
+        method: "POST",
+        token: user?.token,
+      });
+      console.log(data);
+      if (res?.status === "failed") {
+        setErrMsg(res);
+      } else {
+        console.log(res);
+        console.log(res.episode);
+        dispatch(setEpisode(res.episode));
+        setErrMsg("");
+        reset(defaultValues);
+        setTimeout(() => {
+          window.location.replace("/");
+        }, 250);
+        setIsSubmitting(false);
+        console.log(user);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+    }
+
+    // console.log(episodesObj);
   };
 
   return (
@@ -204,8 +237,14 @@ function EpisodeForm() {
         </section>
 
         <div className="flex flex-row gap-4 justify-center mt-5">
-          <input className="button-style" type="submit"></input>
-          <Link to={"/"} className="button-style">
+          {isSubmitting ? (
+            <div className="w-[5rem] ">
+              <Loading />
+            </div>
+          ) : (
+            <input className="button-style" type="submit" />
+          )}
+          <Link to={"/"} className="button-dark">
             Go Back
           </Link>
         </div>

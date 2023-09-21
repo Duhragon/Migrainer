@@ -1,5 +1,6 @@
 export function createDate(item) {
-  const dateString = item.createdAt;
+  console.log(item);
+  const dateString = item.date;
   const date = new Date(dateString);
   const { duration, severity } = item;
 

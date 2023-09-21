@@ -23,6 +23,7 @@ const episodeSchema = new mongoose.Schema(
       type: [String],
       required: [true, "Activities are required for episodes"],
     },
+    episodes: [{ type: Schema.Types.ObjectId, ref: "Episodes" }],
   },
   { timestamps: true }
 );

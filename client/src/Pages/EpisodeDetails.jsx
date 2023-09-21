@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
 import { Link, useOutletContext, useParams } from "react-router-dom";
-import { createDate } from "../helperFunc";
 import { PiDotFill } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import Loading from "../Components/Loading";
 import moment from "moment";
+import { deleteEpisode } from "../../../server/Controllers/episodeController";
 
 function EpisodeDetails({ deletePost }) {
   const [loading, setLoading] = useState(false);
-  const { episodes } = useSelector(state => state.user.user);
+  const episodes = useSelector(state => state.episode.episode);
+
   const { episodeId } = useParams();
   const [topBannerRef] = useOutletContext();
   const [contentHeight, setContentHeight] = useState(0);
@@ -20,12 +21,12 @@ function EpisodeDetails({ deletePost }) {
       setContentHeight(window.innerHeight - navbarHeight);
     };
 
+    // const deleteEpisode = async;
+
     // Attach an event listener for window resize
     window.addEventListener("resize", updateContentHeight);
-
     // Initial content height calculation
     updateContentHeight();
-
     // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", updateContentHeight);
@@ -33,10 +34,10 @@ function EpisodeDetails({ deletePost }) {
   }, [topBannerRef]);
 
   const currEpisode = episodes.find(item => {
-    return item._episodeId === episodeId;
+    return item._id === episodeId;
   });
-
-  const currDate = createDate(currEpisode);
+  console.log(currEpisode);
+  // const currDate = createDate(currEpisode);
   if (!currEpisode) return <span>No episode found!!</span>;
 
   const key = crypto.randomUUID();
@@ -55,7 +56,7 @@ function EpisodeDetails({ deletePost }) {
             <h2 className="bg-bg-third rounded-md m-2 mt-4 flex justify-between items-center w-full pl-4 pr-2 py-2 text-text-secondary text-xl font-semibold">
               Episode Details :{" "}
               <span className="text-sm font-normal bg-bg-hover px-2 py-1 rounded">
-                {moment(currEpisode.createdAt).fromNow()}
+                {moment(currEpisode.date).fromNow()}
               </span>
             </h2>
             <div className=" px-2 py-10 text-text-light h-full flex flex-col gap-4 bg-bg-third w-full mb-4 rounded-md">
@@ -63,7 +64,10 @@ function EpisodeDetails({ deletePost }) {
                 <span className="pr-1 text-links-hover">
                   <PiDotFill />
                 </span>
-                Occurred on <span className="px-1 text-text-secondary font-semibold ">{currDate}</span>
+                Occurred on{" "}
+                <span className="px-1 text-text-secondary font-semibold ">
+                  {moment(currEpisode.date).format("MMM Do YY")}
+                </span>
               </p>
               <p className="flex items-center">
                 <span className="pr-1 text-links-hover">

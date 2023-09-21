@@ -61,7 +61,11 @@ export const createEpisode = async (req, res, next) => {
     });
 
     // Use populate to automatically populate the episodes in the user document
-    const user = await Users.findById(userId).populate("episodes");
+    // const user = await Users.findById(userId);
+    const user = await Users.findById(userId).populate({
+      path: "episodes",
+      select: "duration severity symptoms activities date",
+    });
     user.episodes.push(episode);
 
     // Save the user document
@@ -78,6 +82,33 @@ export const createEpisode = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: error.message });
+  }
+};
+
+export const getEpisodes = async (req, res, next) => {
+  try {
+    const { userId } = req.body.user;
+
+    // Find the user by their ID
+    const user = await Users.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Fetch episodes for the current user
+    const episodes = await Episodes.find({ userId }).populate({
+      path: "episodes",
+      select: "duration severity date activities symptoms",
+    });
+
+    res.status(200).json({
+      success: true,
+      episodes,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 

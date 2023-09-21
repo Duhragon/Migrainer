@@ -1,14 +1,33 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import EpisodeItems from "../MainComponents/EpisodeItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Loading from "../Loading";
+import { getEpisodes } from "../../Utils/index.js";
+import { getEpisodeArr } from "../../Redux/episodeSice";
+import { useNavigate, useNavigation } from "react-router-dom";
+// import { getEpisodes } from "../../Utils/index.js";
 
 function EpisodePreview() {
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const { user } = useSelector(state => state.user);
-  const { episodes } = user;
+  const episodes = useSelector(state => state.episode.episode);
+  const loadingSet = useSelector(state => state.episode.loading);
+
+  useEffect(() => {
+    // Fetch episodes when the component mounts or re-renders
+    setLoading(true);
+    dispatch(getEpisodes())
+      .then(() => {
+        setLoading(false); // Set loading to false once episodes are fetched
+      })
+      .catch(error => {
+        console.error("Error fetching episodes:", error);
+        setLoading(false); // In case of an error, still set loading to false
+      });
+  }, [dispatch]);
 
   return (
     // <div className="m-2 bg-bg-third md:w-6/12">
@@ -17,7 +36,7 @@ function EpisodePreview() {
         Migraine Episodes recorded: {episodes?.length}
       </h2>
       <ul className=" h-80  mb-3 overflow-auto">
-        {episodes?.length === 0 ? (
+        {!episodes.length ? (
           <div
             className={`px-3 h-full flex flex-col sm:flex-row text-text-light overflow-y-hidden overflow-x-hidden items-center justify-center`}
           >
@@ -39,10 +58,6 @@ function EpisodePreview() {
             >
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
-          </div>
-        ) : loading ? (
-          <div className="h-full flex justify-center items-center">
-            <Loading />
           </div>
         ) : (
           episodes?.map((episode, index) => <EpisodeItems item={episode} i={index} key={episode._id} />)

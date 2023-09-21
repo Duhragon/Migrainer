@@ -2,26 +2,24 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { VictoryPie, VictoryVoronoiContainer } from "victory";
 
-function Activities() {
-  const { episodes } = useSelector(state => state.user.user);
+function Symptoms() {
+  const episodes = useSelector(state => state.episode.episode);
 
-  const activities = episodes.map(item => item.activities);
-  const activitiesArray = activities.join(",").split(",");
+  const symptoms = episodes.map(item => item.symptoms);
+  const symptomArray = symptoms.join(",").split(",");
 
   // Creates the array needed to dynamically update the chart
-  const finalActivities = activitiesArray.reduce((prevV, currV) => {
+  const finalSymptoms = symptomArray.reduce((prevV, currV) => {
     if (!prevV[currV]) prevV[currV] = 1;
     else prevV[currV]++;
     return prevV;
   }, {});
 
-  // Converting the final array into a variable that the chart will use to visualize data
-  const activitiesData = Object.keys(finalActivities).map(activity => ({
-    x: activity,
-    y: finalActivities[activity],
+  //Converting the final array into a variable that the chart will use to visualize data
+  const symptomsData = Object.keys(finalSymptoms).map(symptom => ({
+    x: symptom,
+    y: finalSymptoms[symptom],
   }));
-
-  // console.log(activitiesData);
 
   const colorData = [
     "#5f8baf",
@@ -38,31 +36,31 @@ function Activities() {
 
   return (
     <div className="mx-3 my-3 sm:px-10 h-full ">
-      <div className="chart-container h-full flex flex-col items-start md:flex-row md:justify-between">
-        <div className="  w-full md:w-7/12  sm:px-6 ">
+      <div className="chart-container h-fit flex flex-col md:flex-row md:justify-between">
+        <div className="  w-full h-fit md:w-7/12  sm:px-6 flex-col justify-center items-center">
           <div className=" rounded px-6 pb-2  flex flex-col justify-center" style={{ minHeight: "16rem" }}>
-            <h2 className="py-2 text-sm text-center bg-bg-duration px-3 rounded font-semibold ">
-              Activity pattern {episodes.length} episodes
+            <h2 className="py-2  bg-bg-duration text-center px-3 font-semibold text-sm rounded">
+              Symptom pattern {episodes.length} episodes
             </h2>
             <ul className="tracking-wider">
-              {activitiesData.map((item, i) => (
+              {symptomsData.map((item, i) => (
                 <li
                   key={i}
                   className={` ${
                     i % 2 !== 0 ? "bg-bg-duration" : ""
                   } flex text-text-secondary text-sm  py-1 px-3 items-center`}
                 >
-                  {`${item.x.slice(0, 1).toUpperCase() + item.x.slice(1)}`}{" "}
-                  <span className="inline-block ml-auto mr-2">{item.y}x</span>
+                  {`${item.x.slice(0, 1).toUpperCase() + item.x.slice(1)} `}{" "}
+                  <span className="inline-block  ml-auto mr-2">{item.y}x</span>
                   <span className={` w-3 h-3`} style={{ backgroundColor: colorData[i] }}></span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="chart mx-auto" style={{ display: "flex", justifyContent: "center" }}>
+        <div className="chart mx-auto">
           <VictoryPie
-            style={{ labels: { display: "none" } }}
+            style={{ labels: { fill: "none" } }}
             containerComponent={
               <VictoryVoronoiContainer
                 style={{
@@ -74,8 +72,9 @@ function Activities() {
             height={450} // Set the height here (e.g., 400 pixels)
             // labelComponent={<VictoryTooltip />}
             colorScale={colorData}
-            data={activitiesData}
+            data={symptomsData}
           />
+
           <ul>
             <></>
           </ul>
@@ -85,4 +84,4 @@ function Activities() {
   );
 }
 
-export default Activities;
+export default Symptoms;

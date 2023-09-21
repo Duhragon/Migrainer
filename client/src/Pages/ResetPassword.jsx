@@ -4,6 +4,7 @@ import InputFields from "../Components/InputFields";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
 import Loading from "../Components/Loading";
+import { apiRequest } from "../Utils";
 
 function Register() {
   const {
@@ -12,10 +13,28 @@ function Register() {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
-  const onSubmit = async function (data) {};
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const onSubmit = async function (data) {
+    setIsSubmitting(true);
+    try {
+      const res = await apiRequest({
+        url: "/users/request-passwordreset",
+        data: data,
+        method: "POST",
+      });
+      if (res?.status === "failed") {
+        setErrMsg(res);
+      } else {
+        setErrMsg(res);
+      }
+      setIsSubmitting(false);
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+    }
+  };
   //   useEffect(function () {
   //     emailRef.current.focus();
   //   }, []);
@@ -60,7 +79,7 @@ function Register() {
                 </Link>
                 {/* </div> */}
               </div>
-              {errMsg?.message && <span>{errMsg?.message}</span>}
+              {errMsg?.message && <span className="text-links-hover text-sm mx-auto">{errMsg?.message}.</span>}
             </form>
           </div>
         </div>
