@@ -73,21 +73,6 @@
     @apply px-2 py-1 rounded bg-button-dark text-text-light tracking-wide font-semibold cursor-pointer hover:bg-button-d-hover transition-all;
   }
 
-  /* .loader {
-    margin-left: 1rem;
-    width: 35px;
-    height: 35px;
-    border: 5px solid #f4eee0;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    color: #201a2d;
-
-    color: #2c253e;
-  } */
-
   .loader {
     width: 30px;
     height: 30px;
@@ -119,6 +104,32 @@
     100% {
       transform: rotate(1turn);
     }
+  }
+
+  .avatar-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  /* Style for the hidden radio inputs */
+  .avatar-label input[type="radio"] {
+    display: none;
+  }
+
+  /* Style for the avatar images */
+  .avatar-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+    margin-right: 10px; /* Adjust spacing between images */
+    border: 2px solid transparent; /* Add a border for selection indication */
+  }
+
+  /* Style for selected avatar */
+  .avatar-label input[type="radio"]:checked + .avatar-image {
+    /* border: solid 1px #ba9ffb; */
+    border-radius: 5px;
+    background-color: #3a3645; /* Change border color for selected avatar */
   }
 }
 

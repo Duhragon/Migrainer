@@ -108,6 +108,7 @@ function Register() {
                     })}
                     errors={errors.firstName ? errors.firstName.message : ""}
                   />
+
                   <InputFields
                     label="Last Name"
                     name="lastName"
@@ -122,6 +123,30 @@ function Register() {
                     })}
                     errors={errors.lastName ? errors.lastName.message : ""}
                   />
+                </div>
+                <div className="flex flex-col items-start justify-center my-1 gap-4">
+                  <div className="flex items-center">
+                    <p>Select an avatar:</p>
+                    <label className="avatar-label">
+                      <input
+                        type="radio"
+                        {...register("avatar", { required: "Avatar selection required" })}
+                        value="/femaleAvatar_prev_ui.png"
+                      />
+                      <img src="/femaleAvatar_prev_ui.png" alt="Avatar 1" className="avatar-image" />
+                    </label>
+                    <label className="avatar-label">
+                      <input
+                        type="radio"
+                        {...register("avatar", { required: "Avatar selection required" })}
+                        value="/maleAvatar_prev_ui.png"
+                      />
+                      <img src="/maleAvatar_prev_ui.png" alt="Avatar 2" className="avatar-image" />
+                    </label>
+                  </div>
+                  {errors?.avatar && (
+                    <span className="text-red-400 text-sm md:text-base lg:text-lg">{errors.avatar?.message}</span>
+                  )}
                 </div>
 
                 {/* EMAIL */}

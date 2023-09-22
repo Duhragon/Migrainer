@@ -8,6 +8,7 @@ import { forwardRef } from "react";
 const TopBanner = forwardRef((props, ref) => {
   const { user } = useSelector(state => state.user);
   const dispatch = useDispatch();
+  console.log(user.avatar);
 
   return (
     <div ref={ref} className="w-full px-3 py-2 bg-bg-third border-b-2 border-bg-secondary">
@@ -26,9 +27,7 @@ const TopBanner = forwardRef((props, ref) => {
               <LuLogOut />
             </button>
           </div>
-          <Link to="/edit-profile">
-            <img src={user.profileUrl} className="h-12 p-1 rounded hover:bg-bg-secondary" />
-          </Link>
+          <img src={user.avatar} className="h-12 p-1 rounded hover:bg-bg-secondary" />
         </div>
       </div>
     </div>

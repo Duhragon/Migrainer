@@ -3,9 +3,9 @@ import { sendVerificationEmail } from "../Utils/sendEmail.js";
 import Users from "../models/userModel.js";
 
 export const register = async (req, res, next) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, avatar } = req.body;
 
-  if (!firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !email || !password || !avatar) {
     next("Provide required fields!");
     return;
   }
@@ -23,7 +23,7 @@ export const register = async (req, res, next) => {
       lastName,
       email,
       password: hashedPassword,
-      // avatar,
+      avatar,
     });
 
     //send Email to user

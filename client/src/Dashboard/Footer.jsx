@@ -34,7 +34,7 @@ function Footer() {
           </p>
         </div>
         <div className="pr-3 sm:pr-3 md:pr-3 pl-1 sm:pl-3 flex items-center justify-center">
-          <img src="Logo.png" className="h-36 my-3 md:h-40 py-3 px-6  rounded-xl bg-bg-secondary" />
+          <img src="Logo.png" className="h-36 my-3 md:h-40 py-3 px-6  rounded-xl bg-bg-secondary " />
         </div>
       </div>
 

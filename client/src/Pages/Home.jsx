@@ -1,4 +1,4 @@
-import Footer from "../Dashboard/Footer";
+import BottomBanner from "../Dashboard/BottomBanner";
 import LeftPane from "../Dashboard/LeftPane";
 import MainContent from "../Dashboard/MainContent";
 import TopBanner from "../Dashboard/TopBanner";
@@ -12,7 +12,7 @@ function Home() {
           {/* <LeftPane /> */}
           <MainContent />
         </div>
-        <Footer />
+        <BottomBanner />
       </div>
       <p className="text-text-secondary flex h-10 flex-col text-sm justify-center w-screen bg-bg-third mt-2 text-center p-1 md:p-2">
         &copy; 2023 Shubham Dhoot

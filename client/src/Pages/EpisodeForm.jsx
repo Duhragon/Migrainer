@@ -89,7 +89,7 @@ function EpisodeForm() {
         reset(defaultValues);
         setTimeout(() => {
           window.location.replace("/");
-        }, 250);
+        }, 100);
         setIsSubmitting(false);
         console.log(user);
       }

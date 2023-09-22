@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      // required: [true, "Avatar is required!"],
+      required: [true, "Avatar is required!"],
     },
     verified: { type: Boolean, default: false },
     episodes: [{ type: Schema.Types.ObjectId, ref: "Episodes" }],
