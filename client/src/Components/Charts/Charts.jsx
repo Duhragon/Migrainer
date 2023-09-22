@@ -9,6 +9,7 @@ import Loading from "../Loading";
 
 function Charts() {
   const episodes = useSelector(state => state.episode.episode);
+  const isLoadingEpisodes = useSelector(state => state.episode.isLoadingEpisodes);
   const [loading, setLoading] = useState(false);
 
   const settings = {
@@ -21,8 +22,7 @@ function Charts() {
 
   return (
     <div className=" flex flex-col">
-      {episodes.length === 0 ? (
-        // Filler container in case there are no episodes
+      {episodes.length === 0 && !isLoadingEpisodes ? (
         <section className="flex p-4 flex-col sm:flex-row flex-grow items-center  rounded-lg bg-bg-third sm:justify-around mx-3 my-4 sm:bg-gradient-to-r from-bg-secondary from-1% via-bg-third via-60% to-bg-third ">
           <img src="lock.png" className="animate-pulse h-32 sm:h-40" />
           <p className=" text-text-light text-sm  text-center flex flex-col py-1">
@@ -34,8 +34,8 @@ function Charts() {
         </section>
       ) : (
         <section className="h-full flex-grow m-3 my-4 bg-bg-third rounded-xl">
-          {loading ? (
-            <div className="flex h-40 justify-center items-center">
+          {isLoadingEpisodes ? (
+            <div className="flex h-80 justify-center items-center">
               <Loading />
             </div>
           ) : (

@@ -14,7 +14,7 @@ function EpisodePreview() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.user);
   const episodes = useSelector(state => state.episode.episode);
-  const loadingSet = useSelector(state => state.episode.loading);
+  const isLoadingEpisodes = useSelector(state => state.episode.isLoadingEpisodes);
 
   useEffect(() => {
     // Fetch episodes when the component mounts or re-renders
@@ -36,7 +36,7 @@ function EpisodePreview() {
         Migraine Episodes recorded: {episodes?.length}
       </h2>
       <ul className=" h-80  mb-3 overflow-auto">
-        {!episodes.length ? (
+        {!episodes.length === 0 && !isLoadingEpisodes ? (
           <div
             className={`px-3 h-full flex flex-col sm:flex-row text-text-light overflow-y-hidden overflow-x-hidden items-center justify-center`}
           >
@@ -58,6 +58,10 @@ function EpisodePreview() {
             >
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
+          </div>
+        ) : isLoadingEpisodes ? (
+          <div className="flex h-full items-center justify-center">
+            <Loading />
           </div>
         ) : (
           episodes?.map((episode, index) => <EpisodeItems item={episode} i={index} key={episode._id} />)

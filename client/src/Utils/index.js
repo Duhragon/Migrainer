@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setEpisode } from "../Redux/episodeSice";
+import { setEpisode, setIsLoadingEpisode } from "../Redux/episodeSice";
 
 const API_URL = "http://localhost:8800";
 
@@ -46,17 +46,20 @@ export const apiRequest = async ({ url, token, data, method }) => {
 
 export const getEpisodes = () => async (dispatch, getState) => {
   const user = getState().user.user;
+
   try {
+    dispatch(setIsLoadingEpisode(true));
     const response = await apiRequest({
-      url: "/episodes/get-episodes", // Your API endpoint for fetching episodes
+      url: "/episodes/get-episodes", //api endpoint for fetching updated data (triggers on every render)
       method: "POST",
       token: user?.token,
     });
 
-    // Dispatch an action to update the episodes in the Redux store
-    dispatch(setEpisode(response.episodes));
+    dispatch(setEpisode(response.episodes)); //dispatch action from redux store
+    dispatch(setIsLoadingEpisode(false));
   } catch (error) {
     console.error("Error fetching episodes:", error);
+    dispatch(setIsLoadingEpisode(false));
   }
 };
 
