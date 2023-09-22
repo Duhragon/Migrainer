@@ -43,7 +43,7 @@ function Activities() {
         <div className="  w-full md:w-7/12  sm:px-6 ">
           <div className=" rounded px-6 pb-2  flex flex-col justify-center" style={{ minHeight: "16rem" }}>
             <h2 className="py-2 text-sm text-center bg-bg-duration px-3 rounded font-semibold ">
-              Activity pattern {episodes.length} episodes
+              Activity pattern in {episodes.length} episodes
             </h2>
             <ul className="tracking-wider">
               {activitiesData.map((item, i) => (

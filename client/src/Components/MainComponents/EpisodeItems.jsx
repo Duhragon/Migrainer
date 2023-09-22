@@ -11,7 +11,7 @@ function EpisodeDetails({ item, i }) {
 
   return (
     <Link to={"/episode/" + item._id}>
-      <div className=" border-t border-bg-secondary ">
+      <div className=" border-b border-bg-secondary ">
         <li className="cursor-pointer flex justify-center items-center bg-bg-third md:text-lg p-3 transition-all hover:bg-bg-hover">
           <span className="p-3 bg-bg-duration mr-2 rounded-md font-bold">{i + 1}</span>
           <div className="grid grid-cols-4 w-full text-text-secondary hover:text-text-primary justify-between transition-all">

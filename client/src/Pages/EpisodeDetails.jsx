@@ -4,15 +4,20 @@ import { PiDotFill } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import Loading from "../Components/Loading";
 import moment from "moment";
-import { deleteEpisode } from "../../../server/Controllers/episodeController";
+import { deleteEpisode } from "../Utils/index.js";
 
-function EpisodeDetails({ deletePost }) {
-  const [loading, setLoading] = useState(false);
+function EpisodeDetails() {
   const episodes = useSelector(state => state.episode.episode);
-
+  const isLoadingEpisode = useSelector(state => state.episode.isLoadingEpisode);
   const { episodeId } = useParams();
   const [topBannerRef] = useOutletContext();
   const [contentHeight, setContentHeight] = useState(0);
+  const user = useSelector(state => state.user.user);
+
+  const handleDelete = async id => {
+    await deleteEpisode(id, user.token);
+    window.location.replace("/");
+  };
 
   useEffect(() => {
     // Function to update the content height when the window is resized
@@ -49,7 +54,7 @@ function EpisodeDetails({ deletePost }) {
       style={{ height: `${contentHeight}px` }}
     >
       <section className="w-full sm:w-[70%] md:w-[60%] lg:w-[50%]  flex flex-col mx-3 justify-center items-center">
-        {loading ? (
+        {isLoadingEpisode ? (
           <Loading />
         ) : (
           <>
@@ -136,7 +141,7 @@ function EpisodeDetails({ deletePost }) {
                 <Link to={"/"} className="button-style">
                   Go Back
                 </Link>
-                <button className="button-dark" onClick={() => deletePost(currEpisode._id)}>
+                <button className="button-dark" onClick={() => handleDelete(currEpisode?._id)}>
                   Delete Episode
                 </button>
               </div>

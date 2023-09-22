@@ -12,7 +12,7 @@ import { setEpisode } from "../Redux/episodeSice";
 const severityOptions = [
   { label: "Mild", value: "Mild" },
   { label: "Moderate", value: "Moderate" },
-  { label: "severe", value: "Severe" },
+  { label: "Severe", value: "Severe" },
 ];
 
 const symptonmsList = [
@@ -57,6 +57,7 @@ function EpisodeForm() {
     symptoms: null,
     activities: null,
     severity: "",
+    duration: "",
   };
   const onSubmit = async data => {
     setIsSubmitting(true);
@@ -163,6 +164,7 @@ function EpisodeForm() {
                   className="text-text-third text-input-text p-2 rounded"
                   type="number"
                   placeholder="duration"
+                  defaultValue=""
                   {...register("duration", {
                     required: "duration required",
                     maxLength: {

@@ -40,7 +40,7 @@ function Symptoms() {
         <div className="  w-full h-fit md:w-7/12  sm:px-6 flex-col justify-center items-center">
           <div className=" rounded px-6 pb-2  flex flex-col justify-center" style={{ minHeight: "16rem" }}>
             <h2 className="py-2  bg-bg-duration text-center px-3 font-semibold text-sm rounded">
-              Symptom pattern {episodes.length} episodes
+              Symptom pattern in {episodes.length} episodes
             </h2>
             <ul className="tracking-wider">
               {symptomsData.map((item, i) => (

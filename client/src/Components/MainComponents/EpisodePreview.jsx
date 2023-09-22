@@ -2,30 +2,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import EpisodeItems from "../MainComponents/EpisodeItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import Loading from "../Loading";
 import { getEpisodes } from "../../Utils/index.js";
-import { getEpisodeArr } from "../../Redux/episodeSice";
-import { useNavigate, useNavigation } from "react-router-dom";
-// import { getEpisodes } from "../../Utils/index.js";
+import { setIsLoadingEpisode } from "../../Redux/episodeSice";
 
 function EpisodePreview() {
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.user);
   const episodes = useSelector(state => state.episode.episode);
   const isLoadingEpisodes = useSelector(state => state.episode.isLoadingEpisodes);
 
   useEffect(() => {
     // Fetch episodes when the component mounts or re-renders
-    setLoading(true);
+    dispatch(setIsLoadingEpisode(true));
     dispatch(getEpisodes())
       .then(() => {
-        setLoading(false); // Set loading to false once episodes are fetched
+        dispatch(setIsLoadingEpisode(false));
       })
       .catch(error => {
         console.error("Error fetching episodes:", error);
-        setLoading(false); // In case of an error, still set loading to false
+        dispatch(setIsLoadingEpisode(false));
       });
   }, [dispatch]);
 
@@ -36,7 +32,7 @@ function EpisodePreview() {
         Migraine Episodes recorded: {episodes?.length}
       </h2>
       <ul className=" h-80  mb-3 overflow-auto">
-        {!episodes.length === 0 && !isLoadingEpisodes ? (
+        {episodes.length === 0 && !isLoadingEpisodes ? (
           <div
             className={`px-3 h-full flex flex-col sm:flex-row text-text-light overflow-y-hidden overflow-x-hidden items-center justify-center`}
           >
@@ -59,7 +55,7 @@ function EpisodePreview() {
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
           </div>
-        ) : isLoadingEpisodes ? (
+        ) : isLoadingEpisodes && !episodes.length === 0 ? (
           <div className="flex h-full items-center justify-center">
             <Loading />
           </div>
