@@ -39,7 +39,7 @@ router.post("/reset-password", changePassword);
 router.post("/get-user/:id?", userAuth, getUser);
 
 router.get("/verified", (req, res) => {
-  res.sendFile(path.join(__dirname, "./authRoutes.jsViews/build", "index.html"));
+  res.sendFile(path.join(__dirname, "./Views/build", "index.html"));
 });
 router.get("/resetpassword", (req, res) => {
   res.sendFile(path.join(__dirname, "./Views/build", "index.html"));
