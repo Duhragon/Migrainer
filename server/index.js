@@ -18,7 +18,7 @@ const __dirname = path.resolve(path.dirname(""));
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "views/build")));
+app.use(express.static(path.join(__dirname, "./Views/build/index.html")));
 
 const PORT = process.env.PORT || 8800;
 app.get("/favicon.ico", (req, res) => {
