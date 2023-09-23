@@ -102,7 +102,7 @@ const LoginForm = () => {
                 </Link>
               </div>
             </div>
-            {errMsg?.message && <span>{errMsg?.message}</span>}
+            {errMsg?.message && <span className="text-sm text-links-hover">{errMsg?.message}</span>}
           </form>
         </div>
       </div>

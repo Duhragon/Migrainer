@@ -2,7 +2,7 @@ function BottomBanner() {
   return (
     <footer className="">
       <div className=" flex bg-gradient-to-r from-bg-secondary from-1% via-bg-third via-60% to-bg-third rounded-lg  transition-all  mx-5 justify-between mb-1 ">
-        <p className="text-text-secondary text-xl items-start md:text-4xl  font-bold p-2 sm:pl-6 sm:py-2 flex flex-col sm:flex-row sm:gap-2 sm:text-3xl sm:items-center justify-center ">
+        <p className="text-text-secondary tracking-wider  sm:tracking-normal text-xl items-start md:text-4xl  font-bold p-2 pl-3 sm:pl-6 sm:py-2 flex flex-col sm:flex-row sm:gap-2 sm:text-3xl sm:items-center justify-center ">
           <span>It's</span>
           <span>not</span>
           <span>in</span>

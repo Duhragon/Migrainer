@@ -52,7 +52,7 @@ function EpisodePreview() {
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
           </div>
-        ) : isLoadingEpisodes && !episodes.length === 0 ? (
+        ) : isLoadingEpisodes ? (
           <div className="flex h-full items-center justify-center">
             <Loading />
           </div>
