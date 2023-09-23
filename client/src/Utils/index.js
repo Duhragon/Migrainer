@@ -2,6 +2,7 @@ import axios from "axios";
 import { setEpisode, setIsLoadingEpisode } from "../Redux/episodeSice";
 
 const API_URL = "http://localhost:8800";
+// const API_URL = "https://migrainer.onrender.com";
 
 export const API = axios.create({
   baseURL: API_URL,

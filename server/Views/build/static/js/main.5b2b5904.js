@@ -8324,7 +8324,7 @@
                             (e.prev = 8),
                             (e.next = 11),
                             // fetch("https://mernstack-socialmedia.onrender.com/users/reset-password", {
-                            fetch("http://localhost:8800/users/reset-password", {
+                            fetch("https://migrainer.onrender.com/users/reset-password", {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
                               body: JSON.stringify({ userId: s, password: n }),
