@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import InputFields from "./InputFields";
 import { useForm } from "react-hook-form";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import Loading from "./Loading";
 import { apiRequest } from "../Utils";

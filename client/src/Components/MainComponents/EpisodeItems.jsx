@@ -3,7 +3,6 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { createDate } from "../../helperFunc";
 import moment from "moment";
 
 function EpisodeDetails({ item, i }) {
@@ -36,7 +35,6 @@ function EpisodeDetails({ item, i }) {
             </p>
             <span
               className={` pr-1 flex text-links-hover text-2xl items-center justify-end col-start-4 row-start-1 row-span-2 animate-[r-arrow_1s_ease-out_infinite]`}
-              // } text-sm font-thin pr-1 flex items-center justify-end`}
             >
               <FontAwesomeIcon icon={faAngleRight} />
             </span>

@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { user } from "../../assets/data";
 import { Link } from "react-router-dom";
 import { logout } from "../Redux/userSlice";
 import { LuLogOut } from "react-icons/lu";
@@ -8,7 +7,6 @@ import { forwardRef } from "react";
 const TopBanner = forwardRef((props, ref) => {
   const { user } = useSelector(state => state.user);
   const dispatch = useDispatch();
-  console.log(user.avatar);
 
   return (
     <div ref={ref} className="w-full px-3 py-2 bg-bg-third border-b-2 border-bg-secondary">

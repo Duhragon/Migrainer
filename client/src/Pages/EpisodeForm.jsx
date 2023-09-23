@@ -1,9 +1,9 @@
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Select from "react-select";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { apiRequest } from "../Utils";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Components/Loading";
@@ -78,12 +78,9 @@ function EpisodeForm() {
         method: "POST",
         token: user?.token,
       });
-      console.log(data);
       if (res?.status === "failed") {
         setErrMsg(res);
       } else {
-        console.log(res);
-        console.log(res.episode);
         dispatch(setEpisode(res.episode));
         setErrMsg("");
         reset(defaultValues);
@@ -91,14 +88,11 @@ function EpisodeForm() {
           window.location.replace("/");
         }, 100);
         setIsSubmitting(false);
-        console.log(user);
       }
     } catch (error) {
       console.log(error);
       setIsSubmitting(false);
     }
-
-    // console.log(episodesObj);
   };
 
   return (
@@ -194,8 +188,6 @@ function EpisodeForm() {
                 isMulti
                 defaultValue={null}
                 options={symptonmsList}
-                // value={symptonmsList.find(options => options.value === field.value)}
-                // value={field.value}
                 value={
                   Array.isArray(field.value) ? symptonmsList.filter(option => field.value.includes(option.value)) : null
                 }

@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import InputFields from "../Components/InputFields";
 import { useForm } from "react-hook-form";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Loading from "../Components/Loading";
 import { apiRequest } from "../Utils";
 
@@ -35,9 +35,6 @@ function Register() {
       setIsSubmitting(false);
     }
   };
-  //   useEffect(function () {
-  //     emailRef.current.focus();
-  //   }, []);
 
   return (
     <div className=" h-screen flex flex-col md:flex-row items-center justify-center bg-bg-primary ">
@@ -77,7 +74,6 @@ function Register() {
                 >
                   Go to login page?
                 </Link>
-                {/* </div> */}
               </div>
               {errMsg?.message && <span className="text-links-hover text-sm mx-auto">{errMsg?.message}.</span>}
             </form>

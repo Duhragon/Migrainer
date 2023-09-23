@@ -8,15 +8,12 @@ import ResetPassword from "./Pages/ResetPassword";
 import { useSelector } from "react-redux";
 import { getUser } from "./Redux/userSlice";
 import TopBanner from "./Dashboard/TopBanner";
-import EditProfile from "./Pages/EditProfile";
-import "../src/CustomCss/CustomCalendar.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 function Layout() {
   const user = useSelector(getUser);
   const location = useLocation();
   const topBannerRef = useRef(null);
-  const episode = useSelector(state => state.episode.episode);
 
   return (
     <>
@@ -41,7 +38,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/episode/new" element={<EpisodeForm />} />
         <Route path="/episode/:episodeId?" element={<EpisodeDetails />} />
-        <Route path="/edit-profile" element={<EditProfile />} />
       </Route>
       <Route path="/signup" element={<Register />} />
       <Route path="/login" element={<Login />} />

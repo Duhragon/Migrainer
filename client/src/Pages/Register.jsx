@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import InputFields from "../Components/InputFields";
 import { useForm } from "react-hook-form";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Loading from "../Components/Loading";
 import Footer from "../Dashboard/Footer";
 import { apiRequest } from "../Utils/index.js";
@@ -53,33 +53,9 @@ function Register() {
     }
   };
 
-  // const [contentHeight, setContentHeight] = useState(window.innerHeight);
-
-  // useEffect(() => {
-  //   // Function to update the content height when the window is resized
-  //   const updateContentHeight = () => {
-  //     setContentHeight(window.innerHeight);
-  //   };
-
-  //   // Attach an event listener for window resize
-  //   window.addEventListener("resize", updateContentHeight);
-
-  //   // Clean up the event listener when the component unmounts
-  //   return () => {
-  //     window.removeEventListener("resize", updateContentHeight);
-  //   };
-  // }, []);
-
-  //   useEffect(function () {
-  //     emailRef.current.focus();
-  //   }, []);
-
   return (
     <div className="overflow-x-hidden">
-      <div
-        className=" h-screen p-5 flex flex-col md:flex-row items-center justify-center bg-bg-primary "
-        // style={{ height: `${contentHeight}px` }}
-      >
+      <div className=" h-screen p-5 flex flex-col md:flex-row items-center justify-center bg-bg-primary ">
         <div className="bg-bg-secondary md:rounded-l-xl md:rounded-r-none md:h-full h-44 flex md:flex-col w-full md:w-6/12 items-center  rounded-t-xl justify-center">
           <img src="Logo.png" className="h-24 sm:py-3 pr-8 md:pr-0  sm:h-40 animate-bounce" />
           <div className="flex flex-col items-center gap-1 md:mt-8 sm:gap-3">
@@ -102,7 +78,6 @@ function Register() {
                     containerStyle="flex flex-col gap-1 sm:w-6/12"
                     labelStyle="text-sm md:text-base"
                     inputStyle="p-1 px-2 md:text-base w-full text-input-text rounded text-sm w"
-                    // ref={emailRef}
                     register={register("firstName", {
                       required: "First name required",
                     })}
@@ -117,13 +92,14 @@ function Register() {
                     containerStyle="flex flex-col gap-1 sm:w-6/12"
                     labelStyle="text-sm md:text-base"
                     inputStyle="p-1 px-2 md:text-base w-full text-input-text rounded text-sm"
-                    // ref={passwordRef}
                     register={register("lastName", {
                       required: "Last name required",
                     })}
                     errors={errors.lastName ? errors.lastName.message : ""}
                   />
                 </div>
+
+                {/* Avatar selection*/}
                 <div className="flex flex-col items-start justify-center my-1 gap-4">
                   <div className="flex items-center">
                     <p>Select an avatar:</p>
@@ -202,20 +178,13 @@ function Register() {
 
                 <div className="flex gap-3 items-center justify-between mt-4">
                   {isSubmitting ? <Loading /> : <button className={`button-style`}>Sign Up</button>}
-                  {/* <div className="flex flex-col gap-2">
-                  <Link
-                    className="mr-auto text-sm md:text-base hover:text-links-hover transition-all text-links cursor-pointer underline"
-                    to="/reset-password"
-                  >
-                    Forgot password?
-                  </Link> */}
+
                   <Link
                     className="ml-auto text-sm md:text-base hover:text-links-hover transition-all text-links cursor-pointer underline"
                     to="/login"
                   >
                     Already have an account?
                   </Link>
-                  {/* </div> */}
                 </div>
                 {errMsg?.message && <span className="text-links-hover text-sm mx-auto">{errMsg?.message}.</span>}
               </form>

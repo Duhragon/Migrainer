@@ -8,7 +8,6 @@ const episodeRoute = express.Router();
 episodeRoute.post(`/create-episode`, userAuth, createEpisode);
 
 //get episodes
-// episodeRoute.post(`/`, userAuth, getEpisodes);
 episodeRoute.post(`/get-episodes`, userAuth, getEpisodes);
 
 //delete episode

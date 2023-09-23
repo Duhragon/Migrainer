@@ -49,11 +49,9 @@
 }
 
 .chart-container {
-  /* width: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 20px; */
 }
 
 .chart {
@@ -127,7 +125,6 @@
 
   /* Style for selected avatar */
   .avatar-label input[type="radio"]:checked + .avatar-image {
-    /* border: solid 1px #ba9ffb; */
     border-radius: 5px;
     background-color: #3a3645; /* Change border color for selected avatar */
   }

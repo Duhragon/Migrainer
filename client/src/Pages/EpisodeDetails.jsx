@@ -20,15 +20,13 @@ function EpisodeDetails() {
   };
 
   useEffect(() => {
-    // Function to update the content height when the window is resized
+    // Update the content height when the window is resized in mobile browsers
     const updateContentHeight = () => {
       const navbarHeight = topBannerRef.current ? topBannerRef.current.clientHeight : 0;
       setContentHeight(window.innerHeight - navbarHeight);
     };
 
-    // const deleteEpisode = async;
-
-    // Attach an event listener for window resize
+    // Event listener for window resize
     window.addEventListener("resize", updateContentHeight);
     // Initial content height calculation
     updateContentHeight();
@@ -42,7 +40,6 @@ function EpisodeDetails() {
     return item._id === episodeId;
   });
   console.log(currEpisode);
-  // const currDate = createDate(currEpisode);
   if (!currEpisode) return <span>No episode found!!</span>;
 
   const key = crypto.randomUUID();

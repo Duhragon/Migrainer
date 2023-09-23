@@ -4,7 +4,6 @@ import { FaLinkedinIn } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="">
-      {/* <div className=" flex bg-bg-third rounded-xl hover:bg-bg-third transition-all  mx-4 justify-end mb-1 "> */}
       <div className=" flex bg-gradient-to-r from-bg-secondary from-1% via-bg-third via-60% to-bg-third rounded-xl hover:bg-bg-third transition-all  mx-5 justify-end mb-1 ">
         <div className="text-text-secondary  text-sm p-2 sm:pl-6 sm:py-2 flex flex-col justify-center items-end ">
           <p className="    py-1 px-2 rounded ">
@@ -37,11 +36,6 @@ function Footer() {
           <img src="Logo.png" className="h-36 my-3 md:h-40 py-3 px-6  rounded-xl bg-bg-secondary " />
         </div>
       </div>
-
-      {/* Copyright footer */}
-      {/* <p className="flex h-10 flex-col  justify-center w-screen absolute left-0 bottom-0 grow bg-bg-third mt-2 text-center p-1 md:p-2">
-        &copy; 2023 Shubham Dhoot
-      </p> */}
     </footer>
   );
 }

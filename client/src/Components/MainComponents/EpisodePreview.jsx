@@ -26,7 +26,6 @@ function EpisodePreview() {
   }, [dispatch]);
 
   return (
-    // <div className="m-2 bg-bg-third md:w-6/12">
     <div className="mt-3 mx-3 sm:mr-0 rounded-lg sm:w-full bg-bg-third h-fit ">
       <h2 className="flex items-center py-3 border-b border-bg-secondary pl-4 font-semibold text-sm  font tracking-wider">
         Migraine Episodes recorded: {episodes?.length}
@@ -44,13 +43,11 @@ function EpisodePreview() {
             </p>
             <span
               className={` right-arrow pr-1 hidden sm:flex text-links-hover text-2xl items-center justify-end animate-[r-arrow_1s_ease-out_infinite]`}
-              // } text-sm font-thin pr-1 flex items-center justify-end`}
             >
               <FontAwesomeIcon icon={faAngleRight} />
             </span>
             <span
               className={`sm:hidden down-arrow pr-1 flex text-links-hover text-2xl items-center justify-end col-start-4 row-start-1 row-span-2 animate-[d-arrow_1s_ease-out_infinite]`}
-              // } text-sm font-thin pr-1 flex items-center justify-end`}
             >
               <FontAwesomeIcon icon={faAngleDown} />
             </span>

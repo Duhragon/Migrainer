@@ -4,13 +4,11 @@ import Symptoms from "./Symptoms";
 import "../../CustomCss/CustomSlick.css";
 import "../../CustomCss/SlickTheme.css";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 import Loading from "../Loading";
 
 function Charts() {
   const episodes = useSelector(state => state.episode.episode);
   const isLoadingEpisodes = useSelector(state => state.episode.isLoadingEpisodes);
-  const [loading, setLoading] = useState(false);
 
   const settings = {
     infinite: true,
@@ -53,10 +51,3 @@ function Charts() {
 }
 
 export default Charts;
-{
-  /* <div className="flex flex-grow tracking-wide  items-center border-2 border-links rounded justify-center  mx-3 my-6"> */
-}
-
-{
-  /* </div> */
-}

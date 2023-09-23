@@ -29,21 +29,6 @@ export const apiRequest = async ({ url, token, data, method }) => {
   }
 };
 
-// export const fetchEpisodes = async (token, dispatch, uri, data) => {
-//   try {
-//     const res = await apiRequest({
-//       url: uri || "/episodes",
-//       token: token,
-//       method: "POST",
-//       data: data || {},
-//     });
-//     dispatch(setEpisode(res?.data));
-//     return;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 export const getEpisodes = () => async (dispatch, getState) => {
   const user = getState().user.user;
 

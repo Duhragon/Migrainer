@@ -154,23 +154,6 @@ export const changePassword = async (req, res) => {
   }
 };
 
-// export const getUser = async (req, res, next) => {
-//   try {
-//     const { userId } = req.body.user;
-//     const { id } = req.params;
-//     const user = await Users.findById(userId);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({
-//       message: "auth error.",
-//       success: false,
-//       error: error.message,
-//     });
-//   }
-// };
-
-// userController.js
-
 export const getUser = async (req, res, next) => {
   try {
     const { userId } = req.body.user;

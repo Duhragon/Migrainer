@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { VictoryPie, VictoryVoronoiContainer } from "victory";
 
@@ -21,6 +20,7 @@ function Symptoms() {
     y: finalSymptoms[symptom],
   }));
 
+  //Colors array needed to assign to labels in chart
   const colorData = [
     "#5f8baf",
     "#a688fa",

@@ -1,9 +1,7 @@
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { VictoryPie, VictoryVoronoiContainer } from "victory";
 
 function Activities() {
-  // const { episodes } = useSelector(state => state.user.user);
   const episodes = useSelector(state => state.episode.episode);
 
   const activities = episodes.map(item => item.activities);
@@ -22,8 +20,7 @@ function Activities() {
     y: finalActivities[activity],
   }));
 
-  // console.log(activitiesData);
-
+  //Assigning colors to labels on charts
   const colorData = [
     "#5f8baf",
     "#a688fa",

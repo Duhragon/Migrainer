@@ -27,10 +27,3 @@ const InputFields = React.forwardRef(function InputFields(
 
 InputFields.displayName = "InputFields";
 export default InputFields;
-
-{
-  /* <div className="flex flex-col gap-2">
-  <label className="text-sm md:text-base">Email</label>
-  <input className="p-1 px-2 md:text-base rounded text-sm" placeholder="user@email.com" />
-</div> */
-}
