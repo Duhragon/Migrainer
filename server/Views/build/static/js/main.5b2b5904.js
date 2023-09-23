@@ -8301,8 +8301,8 @@
         v = u((0, e.useState)(null), 2),
         g = v[0],
         y = v[1],
-        // b = "https://migrainer.netlify.app/login",
-        b = "http://localhost:8800/login",
+        b = "https://migrainer.netlify.app/login",
+        // b = "http://localhost:8800/login",
         w = (function () {
           var e,
             t =
