@@ -1,9 +1,28 @@
+import { useEffect } from "react";
 import LoginForm from "../Components/LoginForm";
-import Footer from "../Dashboard/Footer";
 
 function Login() {
+  const [contentHeight, setContentHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const updateContentHeight = () => {
+      setContentHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", updateContentHeight);
+
+    updateContentHeight();
+
+    return () => {
+      window.removeEventListener("resize", updateContentHeight);
+    };
+  }, []);
+
   return (
-    <div className="lg:p-5   w-full lg:flex h-[100vh] p-3 bg-bg-primary items-center justify-center">
+    <div
+      className="lg:p-5   w-full lg:flex h-[100vh] p-3 bg-bg-primary items-center justify-center"
+      style={{ height: `${contentHeight}px` }}
+    >
       {/* Left */}
       <div className="lg:w-6/12 bg-bg-secondary gap-6 items-center lg:flex-col flex flex-col sm:flex-row sm:gap-20 rounded-t-xl lg:rounded-l-xl lg:rounded-r-none lg:h-full h-2/4 justify-center ">
         <img src="Logo.png" className="h-32 sm:h-40 lg:h-60 animate-bounce" />
