@@ -39,15 +39,11 @@ function EpisodeDetails() {
   const currEpisode = episodes.find(item => {
     return item._id === episodeId;
   });
-  console.log(currEpisode);
   if (!currEpisode) return <span>No episode found!!</span>;
-
-  const key = crypto.randomUUID();
-  console.log(key);
 
   return (
     <div
-      className="overflow-y-auto flex w-full h-full items-center justify-center"
+      className="overflow-hidden bg-bg-secondary flex w-full h-full items-center justify-center"
       style={{ height: `${contentHeight}px` }}
     >
       <section className="w-full sm:w-[70%] md:w-[60%] lg:w-[50%]  flex flex-col mx-3 justify-center items-center">
