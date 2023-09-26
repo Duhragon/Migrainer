@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import EpisodeItems from "../MainComponents/EpisodeItems";
+import EpisodeItems from "./EpisodeItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import Loading from "../Loading";

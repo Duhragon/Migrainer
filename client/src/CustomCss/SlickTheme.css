@@ -11,10 +11,7 @@
   font-style: normal;
 
   src: url("./fonts/slick.eot");
-  src: url("./fonts/slick.eot?#iefix") format("embedded-opentype"),
-    url("../node_modules/slick-carousel/slick/fonts/slick.woff") format("woff"),
-    url("../node_modules/slick-carousel/slick/fonts/slick.ttf") format("truetype"),
-    url("./fonts/slick.svg#slick") format("svg");
+  src: url("./fonts/slick.eot?#iefix") format("embedded-opentype"), url("./fonts/slick.svg#slick") format("svg");
 }
 /* Arrows */
 .slick-prev,

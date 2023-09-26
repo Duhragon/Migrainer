@@ -15,7 +15,7 @@ function Activities() {
   }, {});
 
   // Converting the final array into a variable that the chart will use to visualize data
-  const activitiesData = Object.keys(finalActivities).map(activity => ({
+  const activitiesData = Object?.keys(finalActivities).map(activity => ({
     x: activity,
     y: finalActivities[activity],
   }));
@@ -50,7 +50,7 @@ function Activities() {
                     i % 2 !== 0 ? "bg-bg-duration" : ""
                   } flex text-text-secondary text-sm  py-1 px-3 items-center`}
                 >
-                  {`${item.x.slice(0, 1).toUpperCase() + item.x.slice(1)}`}{" "}
+                  {`${item?.x.slice(0, 1).toUpperCase() + item?.x.slice(1)}`}{" "}
                   <span className="inline-block ml-auto mr-2">{item.y}x</span>
                   <span className={` w-3 h-3`} style={{ backgroundColor: colorData[i] }}></span>
                 </li>

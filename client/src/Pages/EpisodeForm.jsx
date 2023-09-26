@@ -96,7 +96,7 @@ function EpisodeForm() {
   };
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center h-full bg-bg-fourth">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className=" bg-bg-third w-[90%] sm:w-[80%] flex flex-col p-10 rounded-lg h-[90%] justify-center gap-4 md:w-[60%]"

@@ -3,7 +3,7 @@ import MainContent from "../Dashboard/MainContent";
 
 function Home() {
   return (
-    <div className="h-screen flex flex-col justify-between">
+    <div className="h-fit flex flex-col justify-between bg-bg-fourth">
       <div className=" sm:flex w-full flex-col md:mx-auto justify-between lg:w-10/12 xl:w-7/12 ">
         <div className="h-fit pr-2 pl-2">
           <MainContent />

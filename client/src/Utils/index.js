@@ -10,8 +10,6 @@ export const API = axios.create({
 });
 
 export const apiRequest = async ({ url, token, data, method }) => {
-  const completeURL = `${API_URL}${url}`; // Construct the complete URL
-  console.log("Complete URL:", completeURL); // Debug output
   try {
     const result = await API(url, {
       method: method || "GET",

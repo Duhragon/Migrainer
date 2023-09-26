@@ -69,7 +69,7 @@ function Register() {
   };
 
   return (
-    <div className="overflow-x-hidden overflow-y-auto" style={{ height: `${contentHeight}px` }}>
+    <div className="overflow-x-hidden  overflow-y-hidden" style={{ height: `${contentHeight}px` }}>
       <div className=" h-screen p-3 flex flex-col md:flex-row items-center justify-center bg-bg-primary ">
         <div className="bg-bg-secondary md:rounded-l-xl md:rounded-r-none md:h-full h-44 flex md:flex-col w-full md:w-6/12 items-center  rounded-t-xl justify-center">
           <img src="Logo.png" className="h-24 py-4 sm:py-6 pr-8 md:pr-0  sm:h-36 animate-bounce" />
